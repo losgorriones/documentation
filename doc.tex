@@ -8,6 +8,30 @@
 	linkcolor=blue
 }
 
+\usepackage{pgf}
+\usepackage{pgfpages}
+
+\pgfpagesdeclarelayout{boxed}
+{
+	\edef\pgfpageoptionborder{0pt}
+}
+{
+	\pgfpagesphysicalpageoptions
+	{%
+		logical pages=1,%
+	}
+	\pgfpageslogicalpageoptions{1}
+	{
+		border code=\pgfsetlinewidth{0.8pt}\pgfstroke,%
+		border shrink=\pgfpageoptionborder,%
+		resized width=.95\pgfphysicalwidth,%
+		resized height=.95\pgfphysicalheight,%
+		center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
+	}%
+}
+
+\pgfpagesuselayout{boxed}
+
 \usepackage{xepersian}
 \settextfont{Yas}
 
@@ -30,6 +54,7 @@
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
+
 
 \begin{document}
 	\renewcommand{\bibname}{مراجع}
