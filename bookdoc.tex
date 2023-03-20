@@ -1,57 +1,50 @@
-\documentclass[12pt]{book}
+\documentclass[12pt, svgnames]{book}
+
+% URLs and hyperlinks ---------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=Navy,
+	filecolor=magenta,      
+	urlcolor=Navy,
+	pdftitle=Planner,
+}
+\urlstyle{same}
+%------------------------------------------------------------
 
 \usepackage{rotating}
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks=true,
-	linkcolor=blue
-}
 
 \usepackage{pgf}
 \usepackage{pgfpages}
 
-\pgfpagesdeclarelayout{boxed}
-{
-	\edef\pgfpageoptionborder{0pt}
-}
-{
-	\pgfpagesphysicalpageoptions
-	{%
-		logical pages=1,%
-	}
-	\pgfpageslogicalpageoptions{1}
-	{
-		border code=\pgfsetlinewidth{0.8pt}\pgfstroke,%
-		border shrink=\pgfpageoptionborder,%
-		resized width=.95\pgfphysicalwidth,%
-		resized height=.95\pgfphysicalheight,%
-		center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
-	}%
-}
-
-\pgfpagesuselayout{boxed}
 \usepackage{longtable}
 \renewcommand{\arraystretch}{1.4}
+
+% resourses -------------------------------------------------
+\usepackage{natbib}
+%------------------------------------------------------------
+
 \usepackage{xepersian}
 \settextfont{Yas}
 
 \title{
-	\includegraphics[width=3cm, height=3cm]{logo.jpeg} \\ \vspace{2cm}
+	\includegraphics[width=3cm, height=3cm]{logo} \\
+	{\large دانشگاه اصفهان} \vspace{3mm}
+	
 	{\Huge کارتاپ}
 }
 \author{
 	پدید‌آورندگان: \\
 	سینا ربیعی \\
-	مهدی حق‌وردی \\
 	سید حسین حسینی \\
 	فاطمه علی‌ملکی \\
 	علی قدسی مآب \\
 	زهره سورانی \\
-	حانیه شمس الکتابی
-	
+	حانیه شمس الکتابی \\
+	مهدی حق‌وردی
 }
 
 \date{اسفند ۱۴۰۱}
@@ -63,7 +56,9 @@
 \begin{document}
 	\renewcommand{\bibname}{مراجع}
 	\maketitle
+	\frontmatter
 	\tableofcontents
+	\mainmatter
 	
 	\chapter{سند نیازمندی‌ها}
 	\section{مقدمه} 
@@ -82,7 +77,7 @@
 	در کنار این موارد، بخش مهارت افزایی نیز وجود دارد که افراد می‌توانند با کسب آموزش‌های مورد نظر و کسب گواهی معتبر، خود را برای موقعیت‌های شغلی مختلف آماده کنند.
 	
 	\subsection{تعاریف، سرنام‌ها و کوته نوشته‌ها}
-	به جدول مراجعه شود.
+	به جدول \ref{words} مراجعه شود.
 	\begin{sidewaystable}
 		\begin{center}
 			\caption{جدول واژگان، سرنام‌ها و کوته‌نوشته‌ها}
@@ -127,7 +122,7 @@
 				کارفرما & & شخصی است که به علت نیاز نیروی انسانی در شرکتش، کارجویان را با توجه به مهارتشان و نیاز شرکتش، استخدام می‌کند \\
 				
 				\hline
-			\end{tabular}
+			\end{tabular}\label{words}
 		\end{center} 					
 	\end{sidewaystable}
 	
@@ -568,6 +563,10 @@
 	\subsection{برنامه تکرار و برنامه‌ی مرحله}
 	\begin{center}
 		\begin{longtable}{|c|c|c|c|c|}
+			\caption{جدول برنامه‌ی تکرار}
+			% \label{}
+			\endfirsthead
+			\endhead
 			\hline
 			نیازمندی & وابستگی‌ها & تکرار اول & تکرار دوم & تکرار سوم \\
 			\hline
@@ -604,6 +603,6 @@
 			\ref{29} & \ref{20} & \checkmark & & \\ \hline
 		\end{longtable}
 	\end{center}
-	\bibliographystyle{acm-fa}
+	\bibliographystyle{plainnat-fa}
 	\bibliography{Ref}
 \end{document}

@@ -1,51 +1,47 @@
 This is BibTeX, Version 0.99d (TeX Live 2022/dev/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: reportdoc.aux
-The style file: asa-fa.bst
+The style file: plainnat-fa.bst
 Database file #1: Ref.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Warning--empty pages in kung2013object
-
-Done.
 You've used 1 entry,
-            3225 wiz_defined-function locations,
-            753 strings with 5887 characters,
-and the built_in function-call counts, 446 in all, are:
-= -- 30
+            3218 wiz_defined-function locations,
+            730 strings with 5968 characters,
+and the built_in function-call counts, 406 in all, are:
+= -- 31
 > -- 10
 < -- 1
 + -- 4
 - -- 3
-* -- 36
-:= -- 77
-add.period$ -- 2
+* -- 19
+:= -- 66
+add.period$ -- 4
 call.type$ -- 1
-change.case$ -- 5
+change.case$ -- 4
 chr.to.int$ -- 1
 cite$ -- 2
-duplicate$ -- 23
-empty$ -- 45
+duplicate$ -- 24
+empty$ -- 42
 format.name$ -- 4
-if$ -- 92
+if$ -- 91
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 6
-newline$ -- 15
+missing$ -- 7
+newline$ -- 17
 num.names$ -- 4
-pop$ -- 10
+pop$ -- 13
 preamble$ -- 1
-purify$ -- 5
+purify$ -- 3
 quote$ -- 0
-skip$ -- 16
+skip$ -- 12
 stack$ -- 0
-substring$ -- 12
-swap$ -- 3
+substring$ -- 2
+swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
-top$ -- 2
-type$ -- 9
-warning$ -- 1
+top$ -- 0
+type$ -- 11
+warning$ -- 0
 while$ -- 3
 width$ -- 0
-write$ -- 21
-(There was 1 warning)
+write$ -- 23
