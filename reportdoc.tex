@@ -1,50 +1,34 @@
-\documentclass[12pt, dvipsnames, svgnames, x11names]{report}
+\documentclass[12pt, svgnames]{report}
+
+% URLs and hyperlinks ---------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=Navy,
+	filecolor=magenta,      
+	urlcolor=Navy,
+	pdftitle=Planner,
+}
+\urlstyle{same}
+%------------------------------------------------------------
 
 \usepackage{rotating}
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks=true,
-	linkcolor=DarkSlateBlue,
-	filecolor=magenta,      
-	urlcolor=SlateBlue4,
-	pdfpagemode=FullScreen,
-}
-
-\urlstyle{same}
 
 \usepackage{pgf}
 \usepackage{pgfpages}
 
-\pgfpagesdeclarelayout{boxed}
-{
-	\edef\pgfpageoptionborder{0pt}
-}
-{
-	\pgfpagesphysicalpageoptions
-	{%
-		logical pages=1,%
-	}
-	\pgfpageslogicalpageoptions{1}
-	{
-		border code=\pgfsetlinewidth{0.8pt}\pgfstroke,%
-		border shrink=\pgfpageoptionborder,%
-		resized width=.95\pgfphysicalwidth,%
-		resized height=.95\pgfphysicalheight,%
-		center=\pgfpoint{.5\pgfphysicalwidth}{.5\pgfphysicalheight}%
-	}%
-}
-
-\pgfpagesuselayout{boxed}
 \usepackage{longtable}
 \renewcommand{\arraystretch}{1.4}
 \usepackage{xepersian}
 \settextfont{Yas}
 
 \title{
-	% \includegraphics[width=3cm, height=3cm]{20230227_204029(1).jpg} \\
+	\includegraphics[width=3cm, height=3cm]{logo} \\
+	{\large دانشگاه اصفهان} \vspace{3mm}
+	
 	{\Huge کارتاپ}
 }
 \author{
