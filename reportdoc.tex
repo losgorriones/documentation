@@ -39,7 +39,13 @@ urlcolor=Navy,
 \usepackage{enumitem}
 % -----------------------------------------------------------
 
+% adjust a verrrrry big table -------------------------------
 \usepackage{adjustbox}
+% -----------------------------------------------------------
+
+% quotes ----------------------------------------------------
+\newcommand{\say}[1]{‍''{#1}`‍`}
+% -----------------------------------------------------------
 
 % persian support -------------------------------------------
 \usepackage{xepersian}
@@ -85,8 +91,8 @@ urlcolor=Navy,
 
 \newcommand{\zstar}{$\star$}
 \newcommand{\actorsystem}[1]{
-کنشگر: {#1} &
-سیستم: کارتاپ \\
+\textbf{کنشگر: {#1}} &
+\textbf{سیستم: کارتاپ} \\
 }
 \newcommand{\zerostep}[1]{
 & 0. {#1} \\
@@ -99,7 +105,7 @@ urlcolor=Navy,
 \stepcounter{UseCaseCounter}\arabic{UseCaseCounter}. {#1}
 }
 \newcommand{\ucname}[2]{
-\multicolumn{2}{|r|}{\uc{0{#1}}: {#2}} \\
+\multicolumn{2}{|r|}{\uc{{#1}}: {#2}} \\
 }
 \newcommand{\preif}[1]{
 \multicolumn{2}{|r|}{پیش‌شرط:‌ {#1}} \\
@@ -2086,7 +2092,7 @@ urlcolor=Navy,
 \caption{تعامل کنشگر-سیستم \arabic{table} (مدیریت درخواست‌ها)}
 \label{table:uc:req-manage}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
 \ucname{n}{یه اسم}
@@ -2117,34 +2123,31 @@ urlcolor=Navy,
 \end{center}
 \end{table}
 
+\setcounter{UseCaseCounter}{0}
 \begin{table}[H]
-\caption{تعامل کنشگر-سیستم \arabic{table} (جستجوی آگهی)}
+\caption{تعامل کنشگر-سیستم \arabic{table} (‌جستجوی آگهی‌ها)}
 \label{table:uc:apply-search}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
-\ucname{n}{یه اسم}
+\ucname{23}{جستجوی آگهی‌ها}
 \hline
 
-\preif{پیش‌شرط}
+\preif{حداقل یک آگهی در سیستم ثبت شده باشد.}
 \hline
 
-\actorsystem{یه نفر}
+\actorsystem{کاربر}
 \hline
 
-\zerostep{هعب}
+\zerostep{{\small سیستم صفحه‌ی جستجو را نشان می‌دهد.}}
 \hline
 
-\step{\tucbw: سلام} & 
-\step{سلام‌تر} \\
+\step{{\small \textbf{\tucbw}: کاربر کلید‌واژه‌ی مربوطه را در قسمت نوار جستجو وارد می‌کند.}} & 
+\step{{\small سیستم عبارت را در پایگاه داده جستجو و نتایج را آماده کرده و به کاربر نشان می‌دهد.}} \\
 \hline
 
-\step{سلام} & 
-\step{سلام‌تر} \\
-\hline
-
-\step{\tucew: بای} & 
+\step{{\small \textbf{\tucew}: کاربر نتیجه‌ی جستجو را مشاهده می‌کند.}} & 
 \\
 \hline
 
@@ -2152,34 +2155,31 @@ urlcolor=Navy,
 \end{center}
 \end{table}
 
+\setcounter{UseCaseCounter}{0}
 \begin{table}[H]
-\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی رزومه)}
+\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی رزومه‌ها)}
 \label{table:uc:see-resumes}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
-\ucname{n}{یه اسم}
+\ucname{25}{مشاهده‌ی رزومه‌ها}
 \hline
 
-\preif{پیش‌شرط}
+\preif{حداقل یک کارجو در سیستم ثبت شده باشد.}
 \hline
 
-\actorsystem{یه نفر}
+\actorsystem{کارفرما}
 \hline
 
-\zerostep{هعب}
+\zerostep{{\small سیستم پروفایل یک کارجو را نشان می‌دهد.}}
 \hline
 
-\step{\tucbw: سلام} & 
-\step{سلام‌تر} \\
+\step{\textbf{\tucbw}: کارفرما بر روی دکمه‌ی \say{رزومه} در صفحه‌ی پروفایل کارجوی مدنظر کلیک می‌کند.} & 
+\step{{\small سیستم رزومه‌ي کارجو را از پایگاه داده خوانده و به کارفرما نشان می‌دهد.}} \\
 \hline
 
-\step{سلام} & 
-\step{سلام‌تر} \\
-\hline
-
-\step{\tucew: بای} & 
+\step{{\small \textbf{\tucew}: کارفرما روزمه‌ی کارجوی مدنطر را -درصورت وجود- مشاهده‌ می‌کند.}} & 
 \\
 \hline
 
@@ -2187,34 +2187,31 @@ urlcolor=Navy,
 \end{center}
 \end{table}
 
+\setcounter{UseCaseCounter}{0}
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (نشان‌دار‌ کردن آگهی)}
 \label{table:uc:bookmark}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
-\ucname{n}{یه اسم}
+\ucname{17}{نشان‌دار‌ کردن آگهی}
 \hline
 
-\preif{پیش‌شرط}
+\preif{کارجو به سیستم وارد شده باشد، و در سیستم حداقل یک آگهی ثبت شده باشد.}
 \hline
 
-\actorsystem{یه نفر}
+\actorsystem{کارجو}
 \hline
 
-\zerostep{هعب}
+\zerostep{{\small سیستم صفحه‌ی یک آگهی را نشان می‌دهد.}}
 \hline
 
-\step{\tucbw: سلام} & 
-\step{سلام‌تر} \\
+\step{{\small \textbf{\tucbw}: کارجو بر روی علامت ستاره در صفحه‌ی مربوط به آگهی مدنظر کلیک می‌کند}} & 
+\step{{\small ‌سیستم آگهی را در قسمت \say{آگهی‌های نشان‌دار} برای این کارجو ذخیره می‌کند و پیغام \say{آگهی به لیست آگهی‌های نشان‌دار افزوده شد} را نشان می‌دهد.}} \\
 \hline
 
-\step{سلام} & 
-\step{سلام‌تر} \\
-\hline
-
-\step{\tucew: بای} & 
+\step{{\small \textbf{\tucew}: کارجو پیغام \say{آگهی به لیست آگهی‌های نشان‌دار افزوده شد} را مشاهده می‌کند.}} & 
 \\
 \hline
 
@@ -2222,34 +2219,32 @@ urlcolor=Navy,
 \end{center}
 \end{table}
 
+\setcounter{UseCaseCounter}{0}
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی وضعیت آگهی‌های درخواستی)}
 \label{table:uc:see-reqs}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
-\ucname{n}{یه اسم}
+\ucname{18}{مشاهده‌ی وضعیت آگهی‌های درخواستی}
 \hline
 
-\preif{پیش‌شرط}
+\preif{کارجو باید به یک یا بیشتر از یک آگهی، درخواست داده باشد.}
 \hline
 
-\actorsystem{یه نفر}
+\actorsystem{کارجو}
 \hline
 
-\zerostep{هعب}
+\zerostep{{\small سیستم پنل‌کاربری کارجو را نشان‌ می‌دهد.}}
 \hline
 
-\step{\tucbw: سلام} & 
-\step{سلام‌تر} \\
+\step{{\small\textbf{\tucbw}: کارجو به روی دکمه‌ی \say{وضعیت‌ آگهی‌های درخواستی} در قسمت نوار ابزار پنل کاربری کارجو، کلیک می‌کند.}} & 
+
+\step{{\small سیستم آگهی‌های درخواست داده شده توسط کارجو و وضعیت‌ آنها را از پایگاه داده دریافت کرده و به کاربر نشان می‌دهد}} \\
 \hline
 
-\step{سلام} & 
-\step{سلام‌تر} \\
-\hline
-
-\step{\tucew: بای} & 
+\step{{\small\textbf{\tucew}: کارجو لیستی از آگهی‌ها و وضعیتشان را مشاهده می‌کند.}} & 
 \\
 \hline
 
@@ -2257,11 +2252,12 @@ urlcolor=Navy,
 \end{center}
 \end{table}
 
+\setcounter{UseCaseCounter}{0}
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (ارسال روزمه)}
 \ref{uc:resume}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
 \ucname{n}{یه اسم}
@@ -2292,11 +2288,12 @@ urlcolor=Navy,
 \end{center}
 \end{table}
 
+\setcounter{UseCaseCounter}{0}
 \begin{table}[H]
-\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی پروفایل شرکت‌ها) \ref{uc:company-profile}}
+\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی پروفایل شرکت‌ها)}
 \label{table:uc:company-profile}
 \begin{center}
-\begin{tabular}{|r|r|}
+\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
 
 \ucname{n}{یه اسم}
@@ -2322,7 +2319,6 @@ urlcolor=Navy,
 \step{\tucew: بای} & 
 \\
 \hline
-
 \end{tabular}
 \end{center}
 \end{table}
