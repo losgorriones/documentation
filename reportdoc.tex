@@ -36,7 +36,7 @@ urlcolor=Navy,
 %------------------------------------------------------------
 
 % inline lists ----------------------------------------------
-\usepackage[inline]{enumitem}
+\usepackage{enumitem}
 % -----------------------------------------------------------
 
 \usepackage{adjustbox}
@@ -73,7 +73,7 @@ urlcolor=Navy,
 }%
 
 % commands --------------------------------------------------
-\newcommand{\uc}[1]{\lr{U{#1}}}
+\newcommand{\uc}[1]{\lr{UC{#1}}}
 \newcommand{\req}[1]{\lr{R{#1}}}
 \newcommand{\tucbw}{\lr{TUCBW}}
 \newcommand{\tucew}{\lr{TUCEW}}
@@ -106,9 +106,8 @@ urlcolor=Navy,
 }
 
 \newcounter{UseCaseListCounter}
-% \ifnum\value{page}<10 0\fi\arabic{page}
 \newcommand{\ucstep}[1]{
-\lr{U\stepcounter{UseCaseListCounter}\arabic{UseCaseListCounter}}: {#1}
+\lr{UC\stepcounter{UseCaseListCounter}\arabic{UseCaseListCounter}}: {#1}
 }
 
 \newcommand{\subr}{\item[\stepcounter{enumii}\arabic{enumii}.\arabic{enumi}\lr{.R}]}
@@ -964,7 +963,7 @@ urlcolor=Navy,
 
 \section{تعیین قلمرو مورد کاربرد‌ها}		
 لیست مورد کاربرد‌ها به صورت زیر است:
-\begin{itemize}
+\begin{enumerate}
 \item[] \ucstep{ثبت‌نام کاربر:} 			
 
 \tuc				
@@ -1021,12 +1020,12 @@ urlcolor=Navy,
 {کارفرما به روی آواتار یا نام کاربری کارجو در صفحه‌ی پیشنهادات یا جستجو کلیک می‌کند.}				
 {کارفرما اطلاعات پروفایل کارجو را مشاهده می‌کند.}
 
-\item[] \ucstep{ارسال روزمه:}
+\item[] \ucstep{ارسال رزومه:}\label{uc:resume}
 \tuc				
 {کارجو بر روی دکمه "ارسال رزومه" در صفحه آگهی یک شرکت کلیک می‌کند.}
 {کارجو پیغام "رزومه ارسال شد." را مشاهده می‌کند.}
 
-\item[] \ucstep{مشاهده‌ی پروفایل شرکت‌‌ها:}
+\item[] \ucstep{مشاهده‌ی پروفایل شرکت‌‌ها:}\label{uc:company-profile}
 \tuc				
 {کاربر بر روی پروفایل یک شرکت در صفحه معرفی سایت‌ها کلیک می‌کند.}				
 {کاربر وارد صفحه مربوط به شرکت مدنظر می‌شود و اطلاعات آن را مشاهده می‌کند.}
@@ -1046,12 +1045,12 @@ urlcolor=Navy,
 {کاربر بر روی دکمه ی خروج در پنل کاربری کلیک می‌کند.}			
 {کاربر از سامانه خارج می‌شود.}
 
-\item[] \ucstep{نشان‌دار کردن آگهی:}
+\item[] \ucstep{نشان‌دار کردن آگهی:}\label{uc:bookmark}
 \tuc
 {کارجو بر روی علامت ستاره در صفحه مربوط به آگهی مدنظر کلیک می‌کند.}
 {کارجو پیغام "گهی به لیست آگهی‌های نشان‌دار افزوده شد" را مشاهده می‌کند.}
 
-\item[] \ucstep{مشاهده وضعیت آگهی‌های درخواستی:}
+\item[] \ucstep{مشاهده‌ی وضعیت آگهی‌های درخواستی:}\label{uc:see-reqs}
 \tuc		
 {کارجو به روی دکمه‌ "وضعیت آگهی‌های درخواستی" در قسمت نوار ابزار پنل کاربری کارجو کلیک می‌کند.}
 {کارجو لیستی از آگهی‌ها و وضعیتشان را مشاهده می‌کند.}
@@ -1071,12 +1070,12 @@ urlcolor=Navy,
 {کارفرما بر روی دکمه "دعوت به همکاری" درصفحه کارجوی مدنظر کلیک می‌کند.}
 {کارفرما پیغام "پیام با موفقیت ارسال شد." را مشاهده می‌کند.}
 
-\item[] \ucstep{مدیریت درخواست‌ها:}
+\item[] \ucstep{مدیریت درخواست‌ها:}\label{uc:req-manage}
 \tuc				
 {کارفرما بر روی دکمه "مدیریت درخواست‌ها" در پنل کاربری کلیک می‌کند.}
 {کارفرما لیستی از درخواست‌های کارجویان را مشاهده می‌کند.}
 
-\item[] \ucstep{جستجوی آگهی‌ها:}
+\item[] \ucstep{جستجوی آگهی‌ها:}\label{uc:apply-search}
 \tuc				
 {کاربر کلید واژه مربوطه را در نوار جستجو وارد می‌کند.}
 {کاربر نتیجه جستجو را مشاهده می‌کند.}
@@ -1086,7 +1085,7 @@ urlcolor=Navy,
 {کاربر بر روی گزینه فیلتر کلیک می‌کند.}
 {کاربر لیست آگهی‌های فیلتر شده را مشاهده می‌کند.}
 
-\item[] \ucstep{مشاهده رزومه‌ها:}
+\item[] \ucstep{مشاهده رزومه‌ها:}\label{uc:see-resumes}
 \tuc				
 {کارفرما بر روی دکمه "رزومه" در صفحه پروفایل کارجوی مدنظر کلیک می‌کند.}
 {کارفرما رزومه‌ی کارجو مدنظر را -درصورت وجود- مشاهده می‌کند.}
@@ -1109,7 +1108,7 @@ urlcolor=Navy,
 % change to default counter ------------------------------
 \renewcommand{\labelenumi}{\arabic{enumi})}
 % --------------------------------------------------------
-\end{itemize}
+\end{enumerate}
 
 \section{مصورسازی زمینه‌ مورد کاربرد‌ها}	
 کلی شکل :)
@@ -1125,15 +1124,15 @@ urlcolor=Navy,
 \hline
 نیازمندی‌ها &
 اولویت &
-\uc{01} & 
-\uc{02} & 
-\uc{03} & 
-\uc{04} & 
-\uc{05} & 
-\uc{06} & 
-\uc{07} & 
-\uc{08} & 
-\uc{09} & 
+\uc{1} & 
+\uc{2} & 
+\uc{3} & 
+\uc{4} & 
+\uc{5} & 
+\uc{6} & 
+\uc{7} & 
+\uc{8} & 
+\uc{9} & 
 \uc{10} & 
 \uc{11} & 
 \uc{12} & 
@@ -1839,7 +1838,7 @@ urlcolor=Navy,
 تکرار ۲ (۳ هفته & 
 تکرار ۳ (۳ هفته) \\
 \hline
-\uc{01} &
+\uc{1} &
 &
 &
 &
@@ -1847,7 +1846,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{02} &
+\uc{2} &
 &
 &
 &
@@ -1855,7 +1854,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{03} &
+\uc{3} &
 &
 &
 &
@@ -1863,7 +1862,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{04} &
+\uc{4} &
 &
 &
 &
@@ -1871,7 +1870,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{05} &
+\uc{5} &
 &
 &
 &
@@ -1879,7 +1878,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{06} &
+\uc{6} &
 &
 &
 &
@@ -1887,7 +1886,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{07} &
+\uc{7} &
 &
 &
 &
@@ -1895,7 +1894,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{08} &
+\uc{8} &
 &
 &
 &
@@ -1903,7 +1902,7 @@ urlcolor=Navy,
 &
 \\
 \hline
-\uc{09} &
+\uc{9} &
 &
 &
 &
@@ -2085,7 +2084,7 @@ urlcolor=Navy,
 
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (مدیریت درخواست‌ها)}
-% \label{table:uc0}
+\label{table:uc:req-manage}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
@@ -2120,7 +2119,7 @@ urlcolor=Navy,
 
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (جستجوی آگهی)}
-% \label{table:uc0}
+\label{table:uc:apply-search}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
@@ -2155,7 +2154,7 @@ urlcolor=Navy,
 
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی رزومه)}
-% \label{table:uc0}
+\label{table:uc:see-resumes}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
@@ -2190,7 +2189,7 @@ urlcolor=Navy,
 
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (نشان‌دار‌ کردن آگهی)}
-% \label{table:uc0}
+\label{table:uc:bookmark}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
@@ -2225,7 +2224,7 @@ urlcolor=Navy,
 
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی وضعیت آگهی‌های درخواستی)}
-% \label{table:uc0}
+\label{table:uc:see-reqs}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
@@ -2260,7 +2259,7 @@ urlcolor=Navy,
 
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (ارسال روزمه)}
-% \label{table:uc0}
+\ref{uc:resume}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
@@ -2294,8 +2293,8 @@ urlcolor=Navy,
 \end{table}
 
 \begin{table}[H]
-\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی پروفایل شرکت‌ها)}
-% \label{table:uc0}
+\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی پروفایل شرکت‌ها) \ref{uc:company-profile}}
+\label{table:uc:company-profile}
 \begin{center}
 \begin{tabular}{|r|r|}
 \hline
