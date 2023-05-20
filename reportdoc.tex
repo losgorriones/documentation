@@ -118,6 +118,25 @@ urlcolor=Navy,
 
 \newcommand{\subr}{\item[\stepcounter{enumii}\arabic{enumii}.\arabic{enumi}\lr{.R}]}
 % -----------------------------------------------------------
+
+\newcommand{\myc}{\lr{C}}
+\newcommand{\mya}{\lr{A}}
+\newcommand{\asus}{\lr{AS(user, system)}}
+\newcommand{\asjs}{\lr{AS(job seeker, system)}}
+\newcommand{\asje}{\lr{AS(job seeker, the employer)}}
+\newcommand{\ases}{\lr{AS(the employer, system)}}
+\newcommand{\asej}{\lr{AS(the employer, job seeker)}}
+\newcommand{\aser}{\lr{AS(the employer, requests)}}
+\newcommand{\asser}{\lr{AS(system, errors)}}
+\newcommand{\asse}{\lr{AS(system, the employer)}}
+\newcommand{\assj}{\lr{AS(system, job seeker)}}
+\newcommand{\assu}{\lr{AS(system, user)}}
+\newcommand{\myv}{\lr{V}}
+
+\newcommand{\onealef}{۱-الف}
+\newcommand{\oneh}{۱-ه}
+\newcommand{\oned}{۱-د}
+\newcommand{\fiveb}{۵-ب}
 \begin{document}
 \renewcommand{\bibname}{مراجع}
 \includepdf{title}
@@ -506,7 +525,7 @@ urlcolor=Navy,
 کارتاپ باید قسمتی را به عنوان صفحه شخصی کارجو شامل پروفایل، اطلاعات شخصی، علایق و دسته‌بندی مشاغل داشته باشد.
 
 \addeditem
-کارتاپ باید امکان تغییر مشخصات شناسنامه‌ای، اطلاعات تماس و محل اقامت را داشته باشد.
+کارتاپ باید امکان تغییر اطلاعات پروفایل کاربری و رمز عبور را داشته باشد.
 
 \addeditem
 کارتاپ باید قسمتی را به عنوان پنل کاربری اختصاص دهد.
@@ -541,7 +560,7 @@ urlcolor=Navy,
 
 
 \addeditem
-کارتاپ باید امکان فیلتر کردن آگهی ها بر حسب زمان نشر آنها و همچنین  مواردی از قبیل نام استان و شهر، نوع مهارت‌ها و انتخاب نوع موقعیت شغلی را برای کارجویان فراهم سازد.
+کارتاپ باید امکان جستحو و یا فیلتر کردن آگهی‌ها بر حسب زمان نشر آنها و همچنین  مواردی از قبیل نام استان و شهر، نوع مهارت‌ها و انتخاب نوع موقعیت شغلی را برای کارجویان فراهم سازد.
 
 \addeditem
 کارتاپ باید امکان فرستادن رزومه به چندین آگهی به صورت همزمان را داشته باشد. 
@@ -797,28 +816,235 @@ urlcolor=Navy,
 در این مرحله اعضای گروه به دسته‌بندی مفاهیم دامنه پرداختند.
 
 \section{فهرست مفاهیم مهم دامنه}
-کلی کلمه و جدول بلند بلند \ref{table:domain}
+این فهرست در جدول \ref{table:domain} نوشته شده است.
 
-\begin{longtable}{ccc}
-یک کلمه
-\footnotemark[2] &
-دو کلمه
-\footnotemark[10]&
-سه کلمه 
-\footnotemark \\
-\end{longtable}
-
-\begin{table}[H]
-\caption{مفاهیم مهم دامنه}
 \begin{longtable}{|c|c|c|}
+\hline		لیست طوفان فکری &		نتیجه‌ی دسته‌بندی &		قانون \\
 \hline
-لیست طوفان فکری &
-نتیجه‌ی دسته‌بندی &
-قانون \\
+\hline		حساب کاربری &
+\myc &
+\onealef \\
+\hline		نام &
+\mya &
+\oneh \\
+\hline		نام خانوادگی &
+\mya &
+\oneh \\
+\hline		کد ملی &
+\mya &
+\oneh \\
+\hline		ایمیل &
+\mya &
+\oneh \\
+\hline		تاریخ تولد &
+\mya &
+\oneh \\
+\hline		شماره تلفن &
+\mya &
+\oneh \\
+\hline		کد اتباع &
+\mya &
+\oneh \\
+\hline		تحصلیات &
+\mya &
+\oneh \\
+\hline		رزومه &
+\mya &
+\oneh \\
+\hline		محل سکونت &
+\mya &
+\oneh \\
+\hline		نام کاربری &
+\mya &
+\oneh \\
+\hline		رمز عبور &
+\mya &
+\oneh \\
+\hline		علایق &
+\mya &
+\oneh \\
+\hline		دسته‌بندی&
+\mya &
+\oneh \\
+\hline		وضعیت تاهل &
+\mya &
+\oneh \\
+\hline		احراز هویت کردن &
+\asus &
+3 \\
+\hline		خرید اکانت پرمیوم &
+\asus &
+3 \\
+\hline		ساختن حساب‌کاربری &
+\asus &
+3 \\
+\hline		مشاهده‌ی حساب‌کاربری &
+\asus &
+3 \\
+\hline		ویرایش حساب‌‌کاربری &
+\asus &
+3 \\
+\hline		دیدن آگهی‌های شغلی &
+\asus &
+3 \\
+\hline		تغییر رمز عبور &
+\asus &
+3 \\
+\hline		بازیابی رمزعبور فراموش شده &
+\asus &
+3 \\
+\hline		کارجو &
+\myc &
+\oned \\
+\hline
+نشاندار کردن آگهی		&
+\asjs &
+3 \\
+\hline
+دخیره کردن آگهی &
+\asjs &
+3 \\
+\hline
+دادن درخواست شغلی &
+\asje &
+3 \\
+\hline
+ساخت رزومه &
+\asjs &
+3 \\
+\hline
+آپلود رزومه &
+\asjs &
+3 \\
+\hline
+ارسال رزومه &
+\asje &
+3 \\
+\hline
+ جستجو کردن در آگهی‌ها &
+\asjs &
+3 \\
+\hline
+فیلتر کردن آگهی‌ها &
+\asjs &
+3 \\
+\hline
+کارفرما &
+\myc &
+\oned \\
+\hline
+مشاهده‌ی کارجویان پیشنهادی &
+\ases &
+3 \\
+\hline
+مشاهده‌ی پروفایل کارجویان &
+\ases &
+3 \\
+\hline
+ارسال پیام دعوت به همکاری &
+\asej &
+3 \\
+\hline
+مشاهده‌ی رزومه‌ی کارجویان &
+\ases &
+3 \\
+\hline
+پاسخ دادن به درخواست‌ها &
+\aser &
+3 \\
+\hline
+قبول کردن درخواست &
+\aser &
+3 \\
+\hline
+رد کردن درخواست &
+\aser &
+3 \\
+\hline
+ثبت آگهی‌ شغلی &
+\ases &
+3 \\
+\hline
+بارگزاری پروانه‌ی کسب &
+\ases &
+3 \\
+\hline
+ثبت شرکت & 
+\ases & 
+3 \\
+\hline
+نام شرکت & 
+\mya & 
+\oneh \\
+\hline
+شماره‌ی ثبت شرکت & 
+\mya & 
+\oneh \\
+\hline
+شماره‌ی تماس شرکت & 
+\mya & 
+\oneh \\
+\hline
+آدرس شرکت & 
+\mya & 
+\oneh \\
+\hline
+ایمیل شرکت & 
+\mya & 
+\oneh \\
+\hline
+لیست آگهی‌های شرکت & 
+\mya & 
+\oneh \\
+\hline
+زمینه‌ی کاری شرکت & 
+\mya & 
+\oneh \\
+\hline
+عکس شرکت & 
+\mya & 
+\oneh \\
+\hline
+رتبه‌ی شرکت & 
+\mya & 
+\oneh \\
+\hline
+علامت تجاری شرکت & 
+\mya & 
+\oneh \\
+\hline
+مدیریت خطا‌& 
+\asser & 
+3 \\
+\hline
+هویت سنجی مکانی & 
+\asse & 
+3 \\
+\hline
+تطبیق آگهی با رزومه & 
+\assj & 
+3 \\
+\hline
+بازیابی اطلاعات کاربران & 
+\assu & 
+3 \\
+\hline
+۲۰ ثانیه & 
+\myv & 
+\fiveb \\
+\hline
+چت کردن & 
+\asje & 
+3 \\
+\hline
+۱۰۰۰۰ کاربر & 
+\myv & 
+\fiveb \\
 \hline
 \end{longtable}
 \label{table:domain}
-\end{table}
+
+
 \section{به تصویر کشیدن مدل دامنه}
 یه شکل گنده :)
 \section{مرور مدل دامنه}
@@ -1057,7 +1283,7 @@ urlcolor=Navy,
 
 \item[] \ucstep{مشاهده‌ی پروفایل شرکت‌‌ها:}\label{uc:company-profile}
 \tuc				
-{کاربر بر روی پروفایل یک شرکت در صفحه معرفی سایت‌ها کلیک می‌کند.}				
+{کاربر بر روی پروفایل یک شرکت در صفحه معرفی شرکت‌ها کلیک می‌کند.}				
 {کاربر وارد صفحه مربوط به شرکت مدنظر می‌شود و اطلاعات آن را مشاهده می‌کند.}
 
 \item[] \ucstep{ثبت آگهی توسط کارفرما:}
@@ -1070,10 +1296,10 @@ urlcolor=Navy,
 {کارفرما بر روی گزینه \say{کارجویان پیشنهادی به شرکت شما} در پنل کاربری کارفرما کلیک می‌کند.}
 {کارفرما اطلاعات کارجویان پیشنهادی را مشاهده می‌کند.}
 
-\item[] \ucstep{خارج شدن از سامانه:}
+\item[] \ucstep{احراز هویت}
 \tuc				
-{کاربر بر روی دکمه ی خروج در پنل کاربری کلیک می‌کند.}			
-{کاربر از سامانه خارج می‌شود.}
+{}			
+{}
 
 \item[] \ucstep{نشان‌دار کردن آگهی:}\label{uc:bookmark}
 \tuc
@@ -1141,7 +1367,41 @@ urlcolor=Navy,
 \end{enumerate}
 
 \section{مصورسازی زمینه‌ مورد کاربرد‌ها}	
-کلی شکل :)
+
+\begin{figure}[H]
+	\caption{مورد کاربرد \arabic{figure}}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=12cm]{./images/1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\caption{مورد کاربرد \arabic{figure}}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=12cm]{./images/2}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\caption{مورد کاربرد \arabic{figure}}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=12cm]{./images/3}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\caption{مورد کاربرد \arabic{figure}}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=12cm]{./images/4}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\caption{مورد کاربرد \arabic{figure}}
+	\begin{center}
+		\includegraphics[width=\textwidth, height=12cm]{./images/5}
+	\end{center}
+\end{figure}
 
 \section{بازبینی مورد کاربرد‌ها و نمودارها}		
 در این گام مورد کاربرد‌ها، نیازمندی‌ها و ارتباط میان‌ آنها مجدداً بررسی شد و در قالب جدول \ref{table:review} تدوین گردید.
@@ -1329,7 +1589,7 @@ urlcolor=Navy,
 & 
 & 
 &
-&
+\zstar &
 &
 & & & & & & \\
 \hline
@@ -1367,7 +1627,7 @@ urlcolor=Navy,
 & 
 & 
 & 
-& 
+\zstar & 
 & 
 & 
 & 
@@ -1482,7 +1742,7 @@ urlcolor=Navy,
 &
 &
 &
-&
+\zstar &
 \zstar &
 &
 & &\\
@@ -1629,7 +1889,7 @@ urlcolor=Navy,
 & 
 & 
 & 
-& & & & & & & &\\
+& \zstar & & & & \zstar & & &\\
 \hline
 \req{18} &
 3 &
@@ -1668,7 +1928,7 @@ urlcolor=Navy,
 & 
 \zstar & 
 & 
-& 
+\zstar & 
 & 
 & 
 & 
@@ -1792,7 +2052,7 @@ urlcolor=Navy,
 & 
 & 
 & 
-& 
+\zstar & 
 & 
 & 
 & 
@@ -1854,26 +2114,26 @@ urlcolor=Navy,
 \hline
 اولویت مورد کاربرد‌ها &
 &
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& 
-& & & & & & & & \\
+1 & 
+1 & 
+2 & 
+1 & 
+1 & 
+1 & 
+3 & 
+1 & 
+2 & 
+1 & 
+3 & 
+1 & 
+3 & 
+3 & 
+3 & 
+2 & 
+1 & 
+1 & 
+1 & 
+2 & 3 & 3 & 2 & 2 & 3 & 2 & 1 & 2 \\
 \hline
 
 \end{tabular}
@@ -2140,7 +2400,14 @@ urlcolor=Navy,
 پس از طی مراحل فوق، جداولی که در ادامه‌ی مدل‌سازی تعامل کنشگر-سیستم آمده‌ است، رسم شده‌اند.
 
 \section{نمودار‌های تعامل کنشگر-سیستم}
-پس از مشخص شدن موارد کاربرد با مدل‌سازی تعامل کنشگر-سیستم برای برخی از مورد‌ کاربرد‌های پیچیده‌تر نمودار‌های تعامل کنشگر-سیستم برای این موارد کاربرد مشخص شده است که در شکل‌های 
+پس از مشخص شدن موارد کاربرد با مدل‌سازی تعامل کنشگر-سیستم برای برخی از مورد‌ کاربرد‌های پیچیده‌تر نمودار‌های تعامل کنشگر-سیستم برای این موارد کاربرد مشخص شده است که در جداول 
+\ref{table:uc:req-manage}،
+\ref{table:uc:apply-search}،
+\ref{table:uc:see-resumes}،
+\ref{table:uc:bookmark}،
+\ref{table:uc:see-reqs}،
+\ref{table:uc:send-resume} و
+\ref{table:uc:company-profile}
 قابل رؤیت است.
 
 \begin{table}[H]
@@ -2153,20 +2420,22 @@ urlcolor=Navy,
 \ucname{22}{مدیریت درخواست‌ها}
 \hline
 
-\preif{پیش‌شرط}
+\preif{کارفرما وارد سیستم شده باشد.}
 \hline
 
 \actorsystem{کارفرما}
 \hline
 
-\zerostep{هعب{\small }}
+\zerostep{{\small سیستم پنل کاربری کارفرما را نمایش بدهد.}}
 \hline
 
-\step{{\small \textbf{\tucbw}: سلام}} & 
-\step{{\small سلام‌تر}} \\
+\step{{\small \textbf{\tucbw}: کارفرما بر روی دکمه‌ی \say{مدیریت درخواست‌ها} در پنل کاربری کلیک می‌کند.}} & 
+\step{{\small سیستم صفحه‌ی مربوط به مدیریت درخواست‌ها را لود می‌کند.}} \\
 \hline
 
-\step{\textbf{\tucew}: بای} & 
+\step{{\small کارفرما بر روی درخواست مدنظر کلیک می‌کند.}} & 
+\step{{\small سیستم اطلاعات مربوط به درخواست را از پایگاه‌ داده}} \\ \hline
+\step{{\small \textbf{\tucew}: کارفرما لیستی از درخواست‌ها کارجویان را مشاهده می‌کند.}} & 
 \\
 \hline
 
@@ -2185,7 +2454,7 @@ urlcolor=Navy,
 \ucname{23}{جستجوی آگهی‌ها}
 \hline
 
-\preif{حداقل یک آگهی در سیستم ثبت شده باشد.}
+\preif{}
 \hline
 
 \actorsystem{کاربر}
@@ -2217,7 +2486,7 @@ urlcolor=Navy,
 \ucname{25}{مشاهده‌ی رزومه‌ها}
 \hline
 
-\preif{حداقل یک کارجو در سیستم ثبت شده باشد.}
+\preif{}
 \hline
 
 \actorsystem{کارفرما}
@@ -2249,7 +2518,7 @@ urlcolor=Navy,
 \ucname{17}{نشان‌دار‌ کردن آگهی}
 \hline
 
-\preif{کارجو به سیستم وارد شده باشد، و در سیستم حداقل یک آگهی ثبت شده باشد.}
+\preif{}
 \hline
 
 \actorsystem{کارجو}
@@ -2281,7 +2550,7 @@ urlcolor=Navy,
 \ucname{18}{مشاهده‌ی وضعیت آگهی‌های درخواستی}
 \hline
 
-\preif{کارجو باید به یک یا بیشتر از یک آگهی، درخواست داده باشد.}
+\preif{}
 \hline
 
 \actorsystem{کارجو}
@@ -2306,7 +2575,7 @@ urlcolor=Navy,
 \setcounter{UseCaseCounter}{0}
 \begin{table}[H]
 \caption{تعامل کنشگر-سیستم \arabic{table} (ارسال روزمه)}
-\ref{uc:resume}
+\label{table:uc:send-resume}
 \begin{center}
 \begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
 \hline
@@ -2314,20 +2583,22 @@ urlcolor=Navy,
 \ucname{12}{ارسال روزمه}
 \hline
 
-\preif{پیش‌شرط}
+\preif{کاربر وارد شده باشد.}
 \hline
 
 \actorsystem{کارجو}
 \hline
 
-\zerostep{{\small هعب}}
+\zerostep{{\small سیستم صفحه‌ی مربوط به آگهی مدنظر را نمایش دهد.}}
 \hline
 
-\step{{\small \textbf{\tucbw}: سلام}} & 
-\step{{\small سلام‌تر}} \\
+\step{{\small \textbf{\tucbw}: کارجو بر روی دکمه‌ی \say{ارسال رزومه} در صفحه‌ی آگهی یک شرکت کلیک می‌کند.}} & 
+\step{{\small سیستم کارجو را به صفحه‌ی بارگزاری رزومه هدایت می‌کند.}} \\
 \hline
 
-\step{{\small \textbf{\tucew}: بای}} & 
+\step{{\small کارجو رزومه‌ی خود را بارگزاری می‌کند و به روی دکمه‌ی \say{ارسال} کلیک می‌کند.}} & \step{{\small سیستم فایل آپلود شده را برای کارفرمای صاحب آگهی ارسال می‌کند و پیغام \say{رزومه ارسال شد.} را به کارجو نشان می‌دهد.}} \\ \hline
+
+\step{{\small \textbf{\tucew}: کارجو پیغام \say{رزومه‌ ارسال شد.} را مشاهده می‌کند.}} & 
 \\
 \hline
 
@@ -2346,20 +2617,20 @@ urlcolor=Navy,
 \ucname{13}{مشاهده‌ی پروفایل شرکت‌ها}
 \hline
 
-\preif{پیش‌شرط}
+\preif{کاربر وارد سیستم شده باشد.}
 \hline
 
 \actorsystem{کاربر}
 \hline
 
-\zerostep{{\small هعب}}
+\zerostep{{\small سیستم صفحه‌ی مربوط به پروفایل شرکت‌ها را نشان بدهد.}}
 \hline
 
-\step{{\small \textbf{\tucbw}: سلام}} & 
-\step{{\small سلام‌تر}} \\
+\step{{\small \textbf{\tucbw}: کاربر بر روی پروفایل یک شرکت در صفحه‌ی معرفی شرکت‌ها کلیک می‌کند.}} & 
+\step{{\small سیستم اطلاعات مربوط به شرکت مدنظر را از پایگاه داده خوانده و صفحه‌ی مربوطه را آماده می‌کند.}} \\
 \hline
 
-\step{{\small \textbf{\tucew}: بای}} & 
+\step{{\small \textbf{\tucew}: کاربر وارد صفحه‌ی مربوط به شرکت مدنظر می‌شود و اطلاعات آنرا مشاهده می‌کند.}} & 
 \\
 \hline
 \end{tabular}
