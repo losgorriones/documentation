@@ -1,5 +1,7 @@
 \documentclass[12pt,svgnames,oneside]{book}
 
+\usepackage{paralist}
+
 % URLs and hyperlinks ---------------------------------------
 \usepackage{hyperref}
 \hypersetup{
@@ -35,7 +37,7 @@ urlcolor=Navy,
 \usepackage{amssymb}
 %------------------------------------------------------------
 
-% inline lists ----------------------------------------------
+% inline lists and itemize ----------------------------------
 \usepackage{enumitem}
 % -----------------------------------------------------------
 
@@ -138,6 +140,8 @@ urlcolor=Navy,
 \newcommand{\oned}{۱-د}
 \newcommand{\onej}{۱-ج}
 \newcommand{\fiveb}{۵-ب}
+
+\newcommand{\json}{\lr{JSON}}
 \begin{document}
 \renewcommand{\bibname}{مراجع}
 \includepdf{title}
@@ -2679,20 +2683,214 @@ urlcolor=Navy,
 \end{enumerate}
 که در ادامه، با شناختی که از کسب‌وکار تا به اینجای کار پیدا کرده‌ایم، ۷ سناریو و جداول مربوطه در کنار آن نمودار توالی را نشان داده‌ایم.
 
-\section{سناریو و مدل تعامل شئ برای گام \lr{n} از \uc{01}}
-\subsection{سناریو تعامل شئ برای \say{...}}
+\clearpage
+\section{سناریو و مدل تعامل شئ برای گام 2 از \uc{25}}
+\subsection{سناریو تعامل شئ برای \say{مشاهده‌ی رزومه‌ها}}
+\newcounter{MainStepCounter}
+\newcounter{MajorStepCounter}
+\newcounter{PatchStepCounter}
+\newcounter{BetaStepCounter}
+\newcounter{AlphaStepCounter}
+\newcounter{CandidateStepCounter}
+
+\newcommand{\mainstep}[1]{
+	\setcounter{MajorStepCounter}{0}
+	\setcounter{PatchStepCounter}{0}
+	\setcounter{BetaStepCounter}{0}
+	\setcounter{AlphaStepCounter}{0}
+	\setcounter{CandidateStepCounter}{0}	
+	\setcounter{MajorStepCounter}{0}
+	\stepcounter{MainStepCounter}
+	\arabic{MainStepCounter}. {#1} \\
+}
+\newcommand{\beginmainstep}[1]{
+	\setcounter{MajorStepCounter}{1}
+	\setcounter{PatchStepCounter}{0}
+	\setcounter{BetaStepCounter}{0}
+	\setcounter{AlphaStepCounter}{0}
+	\setcounter{CandidateStepCounter}{0}	
+	\stepcounter{MainStepCounter}
+	\arabic{MainStepCounter}.\arabic{MajorStepCounter}. {#1} \\
+}
+\newcommand{\majorstep}[1]{
+	\setcounter{PatchStepCounter}{0}
+	\setcounter{BetaStepCounter}{0}
+	\setcounter{AlphaStepCounter}{0}
+	\setcounter{CandidateStepCounter}{0}
+	\stepcounter{MajorStepCounter}
+	\arabic{MainStepCounter}.\arabic{MajorStepCounter}. {#1} \\
+}
+\newcommand{\patchstep}[1]{
+	\setcounter{BetaStepCounter}{0}
+    \setcounter{AlphaStepCounter}{0}
+	\setcounter{CandidateStepCounter}{0}
+	\stepcounter{PatchStepCounter}
+	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}. {#1} \\
+}
+\newcommand{\betastep}[1]{
+	\setcounter{AlphaStepCounter}{0}
+	\setcounter{CandidateStepCounter}{0}
+	\stepcounter{BetaStepCounter}
+	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}. {#1} \\
+}
+\newcommand{\alphastep}[1]{
+	\setcounter{CandidateStepCounter}{0}\stepcounter{AlphaStepCounter}
+	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}. {#1} \\
+}
+\newcommand{\candidatestep}[1]{
+	\stepcounter{CandidateStepCounter}
+	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}.\arabic{CandidateStepCounter}. {#1} \\
+}
+% --------------------------------------------------------
+\setlength{\parindent}{0.1cm}
+\mainstep{کارفرما بر روی دکمه‌ی \say{رزومه} در پروفایل کارجوی مدنظر کلیک می‌کند.}\\
+\beginmainstep{صفحه‌ی پروفایل کارجو، یک درخواست مبنی بر خواست رزومه و اطلاعات کارجو برا به صورت \json به کنترل‌گر کارجو می‌فرستد.}\\
+\majorstep{کنترل‌گر کارجو، این اطلاعات را به \lr{GDM}\RTLfootnote{\lr{Great Database Manager}} می‌فرستد}\\
+\majorstep{\lr{GDM} با استفاده از مدل \lr{Employer} و اطلاعات درون آبجکت \json، رزومه را از دیتابیس می‌خواند.}
+\indent\patchstep{اگر رزومه‌ای وجود داشت، آن را در یک آبجکت \json برای کنترل‌گر  .کارجو می‌فرستد}
+\indent\patchstep{اگر رزومه‌ای نبود، یک آبجکت \lr{None} به کنترل‌گر کارجو، برمیگرداند.}\\
+\majorstep{کنترل‌گر کارجو، آبجکت \json پاسخ را دریافت می‌کند.}
+\indent\patchstep{اگر پاسخ بازگشتی، \lr{None} نبود آبجکت \json را برای ارسال به لایه‌ی \lr{Front-end} آماده نگه‌ می‌دارد.}
+\indent\patchstep{در غیر این صورت، پیغام \say{عدم وجود رزومه} را در یک آبجکت \json  ذخیره می‌کند.}\\
+\majorstep{کنترل‌گر آبجکت \json را می‌فرستد.}\\
+\majorstep{لایه‌ی \lr{Front-end} صفحه‌ی مناسب را با اطلاعات دریافت شده پر و به کافرما نشان می‌دهد.}
+% --------------------------------------------------------
+\setcounter{MainStepCounter}{0}
+\setlength{\parindent}{15pt}
+
 \subsection{جدول سناریو}
+\newcounter{SenarioCounter}
+\newcommand{\sstep}{\stepcounter{SenarioCounter}\arabic{SenarioCounter}}
 \begin{table}[H]
 \caption{جدول سناریو \arabic{table}}
 \begin{adjustbox}{width=\textwidth}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|p{0.4\textwidth}|c|}
 \hline
 \# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
 \hline
 \hline
+\sstep & 
+کارفرما &
+کلیک می‌کند &
+دکمه‌ی رزومه &
+از صفحه‌ی پروفایل کارحو \\
+\hline
+\sstep & 
+صفحه‌ی پروفایل کارجو &
+ارسال می‌کند &
+\begin{inparaitem}
+	\item درخواست رزومه‌ی کارجو
+	\item آبجکت \json اطلاعات کارجو
+\end{inparaitem} &
+به کنترل‌گر کارجو \\
+\hline
+\sstep & 
+کنترل‌گر کارجو &
+ارسال می‌کند &
+\json &
+به \lr{GDM} \\
+\hline
+\sstep & 
+\lr{GDM} &
+ارسال می‌کند &
+آبجکت \json &
+به مدل \lr{Employer} \\
+\hline
+\sstep & 
+مدل \lr{Employer} & 
+می‌خواند &
+رزومه &
+پایگاه داده \\
+\hline
+\sstep & \multicolumn{4}{|r|}{اگر رزومه‌ای وجود داشت} \\
+\hline
+\sstep & 
+مدل \lr{Employer} & 
+ارسال می‌کند &
+رزومه &
+به \lr{GDM}\\
+\hline
+\sstep & 
+\lr{GDN}&
+ذخیره می‌کند &
+رزومه &
+در \json\\
+\hline
+\sstep & \multicolumn{4}{|r|}{اگر رزومه‌ای وجود نداشت}\\
+\hline
+\sstep & 
+مدل \lr{Employer} & 
+ارسال می‌کند &
+\lr{None} &
+به \lr{GDM}\\
+\hline
+\sstep & 
+\lr{GDN}&
+ذخیره می‌کند &
+\lr{None}&
+در \json\\
+\hline
+\sstep & 
+\lr{GDM} &
+ارسال می‌کند &
+آبجکت \json &
+کنترل‌گر کارجو \\
+\hline
+\sstep & \multicolumn{4}{|r|}{اگر \lr{None} بود} \\
+\hline
+\sstep & 
+کنترل‌گر کارجو &
+ذخیره می‌کند &
+متن \say{عدم وجود رزومه}&
+آبجکت \json\\
+\hline
+\sstep & 
+کنترل‌گر کارجو &
+ارسال می‌کند &
+آبجکت \json &
+لایه‌ی \lr{Front-end} \\
+\hline
+\sstep & 
+لایه‌ی \lr{Front-end}&
+پردازش اطلاعات &
+صفحه‌(ها)ی لازم&
+\\
+\hline
+\sstep & 
+لایه‌ی \lr{Front-end}&
+ارسال صفحه‌ها &
+صفحه‌ها &
+مرورگر \\
+\hline
 \end{tabular}
 \end{adjustbox}
 \end{table}
+\setcounter{SenarioCounter}{0}
+\subsection{نمودار توالی}
+
+\clearpage
+\section{سناریو و مدل تعامل شئ برای گام \lr{n} از \uc{01}}
+\subsection{سناریو تعامل شئ برای \say{...}}
+\subsection{جدول سناریو}
+
+\begin{table}[H]
+\caption{جدول سناریو \arabic{table}}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|}
+\hline			\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
+\hline
+\hline
+\sstep & 		
+سلام 1 &			
+سلام 2 &			
+سلام 3 &			
+سلام 4 \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\setcounter{SenarioCounter}{0}
+
 \subsection{نمودار توالی}
 
 \chapter{اعمال الگو‌های واگذاری مسئولیت}
