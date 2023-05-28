@@ -145,6 +145,7 @@ urlcolor=Navy,
 \newcommand{\gdm}{\lr{GDM} }
 \newcommand{\none}{\lr{None} }
 \newcommand{\frontend}{\lr{Front-end} }
+\newcommand{\serialize}{\lr{serialize} }
 \begin{document}
 \renewcommand{\bibname}{مراجع}
 \includepdf{title}
@@ -2764,7 +2765,6 @@ urlcolor=Navy,
 \majorstep{لایه‌ی \frontend صفحه‌ی مناسب را با اطلاعات دریافت شده پر و به کافرما نشان می‌دهد.}
 % --------------------------------------------------------
 \setcounter{MainStepCounter}{0}
-% \setlength{\parindent}{15pt}
 
 \subsection{جدول سناریو}
 \newcounter{SenarioCounter}
@@ -2873,6 +2873,7 @@ urlcolor=Navy,
 \end{tabular}
 \end{adjustbox}
 \end{table}
+\setcounter{MainStepCounter}{0}
 \setcounter{SenarioCounter}{0}
 \subsection{نمودار توالی}
 
@@ -3000,8 +3001,8 @@ urlcolor=Navy,
 \end{tabular}
 \end{adjustbox}
 \end{table}
+\setcounter{MainStepCounter}{0}
 \setcounter{SenarioCounter}{0}
-
 \subsection{نمودار توالی}
 
 
@@ -3122,6 +3123,7 @@ urlcolor=Navy,
 \end{tabular}
 \end{adjustbox}
 \end{table}
+\setcounter{MainStepCounter}{0}
 \setcounter{SenarioCounter}{0}
 \subsection{نمودار توالی}
 
@@ -3138,7 +3140,7 @@ urlcolor=Navy,
 
 \majorstep{اگر نتیجه جستجو:}
 \indent\patchstep{چیزی نبود، \gdm یک آبجکت \none را به کنترل‌گر آگهی ارسال می‌کند.}
-\indent\patchstep{در غیر این صورت، تمامی آگهی‌‌های پیدا شده را به \json اصطلاحا\\ \lr{serialize} می‌کند و به کنترل‌گر آگهی می‌فرستد.}
+\indent\patchstep{در غیر این صورت، تمامی آگهی‌‌های پیدا شده را به \json اصطلاحا\\ \serialize می‌کند و به کنترل‌گر آگهی می‌فرستد.}
 
 \majorstep{کنترل‌گر آگهی، نتیحه را دریافت می‌کند.}
 
@@ -3200,7 +3202,7 @@ urlcolor=Navy,
 \hline
 \sstep &
 \gdm&
-\lr{serialize} می‌کند&
+\serialize می‌کند&
 آبجکت‌های پیدا شده &
 به \json \\
 \hline
@@ -3248,6 +3250,117 @@ urlcolor=Navy,
 \end{tabular}
 \end{adjustbox}
 \end{table}
+\setcounter{MainStepCounter}{0}
+\setcounter{SenarioCounter}{0}
+\subsection{نمودار توالی}
+
+\clearpage
+\section{سناریو و مدل تعامل شئ برای گام 2 از \uc{13}}
+\subsection{سناریو تعامل شئ برای \say{مشاهده‌ی پروفایل شرکت‌ها}}
+\mainstep{کاربر بر روی پروفایل یک شرکت در صفحه‌ی معرفی شرکت‌ها کلیک می‌کند.}
+
+\beginmainstep{صفحه‌ی پروفایل شرکت، یک درخواست مبنی در درخواست اطلاعات شرکت را به کنترل‌گر شرکت ارسال می‌کند.}
+
+\majorstep{کنترل‌گر شرکت، اطلاعات مربوط به شرکت را از \gdm درخواست می‌کند.}
+
+\majorstep{\gdm با استفاده از مدل \lr{Company} اطلاعات را از پایگاه داده می‌خواند}
+
+\indent\patchstep{اگر شئ‌ای پیدا نشد:}
+\indent\indent\betastep{\gdm یک آبجکت \none را به کنترل‌گر شرکت‌ ارسال می‌کند.}
+\indent\patchstep{اگر شئ پیدا شده کامل باشد: \RTLfootnote{یعنی شرکت تمام اطلاعات را ثبت کرده و فیلدی خالی نیست.}}
+\indent\indent\betastep{\gdm آن را به \json، \serialize می‌کند و به کنترل‌گر شرکت می‌فرستد.‌}
+\indent\patchstep{اگر شئ کامل نباشد:}
+\indent\indent\betastep{\gdm آن را به همراه مقادیر پیشقرض به \json، \serialize می‌کند و به کنترل‌گر شرکت ارسال می‌کند.}
+
+\majorstep{کنترل‌گر شرکت، آبجکت \json یا \none دریافت می‌کند.}
+\indent\patchstep{اگر آبجکت \none :باشد}
+\indent\indent\betastep{کنترل‌گر پیغام \say{اطلاعاتی موجود نمی‌باشد.} را در یک آبجکت \json می‌نویسد.}
+
+\majorstep{کنترل‌گر آبجکت \json را به لایه‌ی \frontend می‌‌فرستد}
+
+\majorstep{لایه‌ی \frontend اطلاعات را پردازش و در مرورگر نشان می‌دهد.}
+
+\subsection{جدول سناریو}
+\begin{table}[H]
+\caption{جدول سناریو \arabic{table}}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|}
+\hline								
+\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
+\hline
+\sstep &
+صفحه‌ی پروفایل شرکت & 
+ارسال می‌کند & 
+درخواست اطلاعات شرکت & 
+به کنترل‌گر شرکت \\ 
+\hline
+\sstep &
+کنترل‌گر شرکت & 
+درخواست می‌کند & 
+درخواست اطلاعات شرکت & 
+\gdm \\ 
+\hline
+\sstep &
+\gdm & 
+می‌خواند & 
+& 
+مدل \lr{Company}\\ 
+\hline
+\sstep &
+\gdm & 
+بررسی می‌کند & 
+آبجکت‌های دریافتی & 
+\\ 
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگز چیزی پیدا نشد}\\ 
+\hline
+\sstep &
+\gdm & 
+ارسال می‌کند & 
+آبجکت \none & 
+\\ 
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر شئ کامل بود}\\ 
+\hline
+\sstep &
+\gdm & 
+\serialize می‌کند & 
+شئ پیدا شده & 
+به \json  \\ 
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگز شئ کامل نبود}\\ 
+\hline
+\sstep &
+\gdm & 
+پُر می‌کند & 
+آبجکت \json & 
+با شئ پیدا شده و مقادیر پیش‌فرض\\ 
+\hline
+\sstep &
+\gdm & 
+ارسال می‌کند & 
+آبجکت \json & 
+به کنترل‌گر شرکت \\ 
+\hline
+\sstep &
+کنترل‌گر شرکت & 
+ارسال می‌کند & 
+آبجکت \json & 
+به لایه‌ی \frontend\\ 
+\hline
+\sstep &
+لایه‌ی \frontend& 
+نشان می‌دهد& 
+اطلاعات دریافتی & 
+در مرورگر \\ 
+\hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\setcounter{MainStepCounter}{0}
 \setcounter{SenarioCounter}{0}
 \subsection{نمودار توالی}
 
