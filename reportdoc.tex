@@ -144,6 +144,7 @@ urlcolor=Navy,
 \newcommand{\json}{\lr{JSON} }
 \newcommand{\gdm}{\lr{GDM} }
 \newcommand{\none}{\lr{None} }
+\newcommand{\frontend}{\lr{Front-end} }
 \begin{document}
 \renewcommand{\bibname}{مراجع}
 \includepdf{title}
@@ -2488,7 +2489,7 @@ urlcolor=Navy,
 \hline
 
 \step{{\small کاربر یک صفحه‌ی \lr{preload} را مشاهده می‌کند و اندکی منتظر نتایج می‌ماند.}} &
-\step{{\small سیستم روی نتایج جستجو‌ پردازش انجام می‌دهد و صفحه‌ی نتایج جستجو را با نتایج پر می‌کند.}} \\
+\step{{\small سیستم صفحه‌ی نتایج جستجو را با نتایج پر می‌کند.}} \\
 \hline
 
 \step{{\small \textbf{\tucew}: کاربر نتیجه‌ی جستجو را مشاهده می‌کند.}} & 
@@ -2744,21 +2745,26 @@ urlcolor=Navy,
 	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}.\arabic{CandidateStepCounter}. {#1} \\
 }
 % --------------------------------------------------------
-\setlength{\parindent}{0.1cm}
-\mainstep{کارفرما بر روی دکمه‌ی \say{رزومه} در پروفایل کارجوی مدنظر کلیک می‌کند.}\\
-\beginmainstep{صفحه‌ی پروفایل کارجو، یک درخواست مبنی بر خواست رزومه و اطلاعات کارجو برا به صورت \json به کنترل‌گر کارجو می‌فرستد.}\\
-\majorstep{کنترل‌گر کارجو، این اطلاعات را به \gdm\RTLfootnote{\lr{Great Database Manager}} می‌فرستد}\\
+% \setlength{\parindent}{0.1cm}
+\mainstep{کارفرما بر روی دکمه‌ی \say{رزومه} در پروفایل کارجوی مدنظر کلیک می‌کند.}
+
+\beginmainstep{صفحه‌ی پروفایل کارجو، یک درخواست مبنی بر خواست رزومه و اطلاعات کارجو برا به صورت \json به کنترل‌گر کارجو می‌فرستد.}
+
+\majorstep{کنترل‌گر کارجو، این اطلاعات را به \gdm\RTLfootnote{\lr{Great Database Manager} این کلاس مسئول مدیریت مدل‌های موجود در \lr{ORM} معماری پروژه‌ است.} می‌فرستد}
+
 \majorstep{\gdm با استفاده از مدل \lr{Employer} و اطلاعات درون آبجکت \json، رزومه را از دیتابیس می‌خواند.}
-\indent\patchstep{اگر رزومه‌ای وجود داشت، آن را در یک آبجکت \json برای کنترل‌گر  .کارجو می‌فرستد}
+\indent\patchstep{اگر رزومه‌ای وجود داشت، آن را در یک آبجکت \json برای کنترل‌گر می‌فرستد}
 \indent\patchstep{اگر رزومه‌ای نبود، یک آبجکت \none به کنترل‌گر کارجو، برمیگرداند.}\\
 \majorstep{کنترل‌گر کارجو، آبجکت \json پاسخ را دریافت می‌کند.}
-\indent\patchstep{اگر پاسخ بازگشتی، \none نبود آبجکت \json را برای ارسال به لایه‌ی \lr{Front-end} آماده نگه‌ می‌دارد.}
-\indent\patchstep{در غیر این صورت، پیغام \say{عدم وجود رزومه} را در یک آبجکت \json  ذخیره می‌کند.}\\
-\majorstep{کنترل‌گر آبجکت \json را می‌فرستد.}\\
-\majorstep{لایه‌ی \lr{Front-end} صفحه‌ی مناسب را با اطلاعات دریافت شده پر و به کافرما نشان می‌دهد.}
+\indent\patchstep{اگر پاسخ بازگشتی، \none نبود آبجکت \json را برای ارسال به لایه‌ی \frontend آماده نگه‌ می‌دارد.}
+\indent\patchstep{در غیر این صورت، پیغام \say{عدم وجود رزومه} را در یک آبجکت \json  ذخیره می‌کند.}
+
+\majorstep{کنترل‌گر آبجکت \json را می‌فرستد.}
+
+\majorstep{لایه‌ی \frontend صفحه‌ی مناسب را با اطلاعات دریافت شده پر و به کافرما نشان می‌دهد.}
 % --------------------------------------------------------
 \setcounter{MainStepCounter}{0}
-\setlength{\parindent}{15pt}
+% \setlength{\parindent}{15pt}
 
 \subsection{جدول سناریو}
 \newcounter{SenarioCounter}
@@ -2850,16 +2856,16 @@ urlcolor=Navy,
 کنترل‌گر کارجو &
 ارسال می‌کند &
 آبجکت \json &
-لایه‌ی \lr{Front-end} \\
+لایه‌ی \frontend \\
 \hline
 \sstep & 
-لایه‌ی \lr{Front-end}&
+لایه‌ی \frontend&
 پردازش اطلاعات &
 صفحه‌(ها)ی لازم&
 \\
 \hline
 \sstep & 
-لایه‌ی \lr{Front-end}&
+لایه‌ی \frontend&
 ارسال صفحه‌ها &
 صفحه‌ها &
 مرورگر \\
@@ -2874,17 +2880,23 @@ urlcolor=Navy,
 \section{سناریو و مدل تعامل شئ برای گام ۳ از \uc{12}}
 \subsection{سناریو تعامل شئ برای \say{ارسال رزومه}}
 \setcounter{MainStepCounter}{1}
-\mainstep{سیستم، کارجو را به صفحه‌ی بارگذاری رزومه هدایت می‌کند.} \\
-\beginmainstep{صفحه‌ی بارگذاری رزومه که شامل قسمتی برای بارگذاری رزومه و پیام \say{لطفا رزومه‌ی خود را با فرمت \lr{PDF} بارگذاری کنید.} می‌باشد، به کارجو نمایش داده می شود.}\\
-\majorstep{\label{send}کارجو فایلی را در صفحه‌ی بارگذاری رزومه بارگذاری می‌کند.}\\
-\majorstep{صفحه‌ی بارگذاری رزومه، فایل بارگذاری شده را به کنترل‌گر رزومه ارسال می‌کند.}\\
-\majorstep{کنترل‌گر بارگذاری رزومه، فرمت فایل بارگذاری شده را بررسی می‌کند.}\\
+\mainstep{سیستم، کارجو را به صفحه‌ی بارگذاری رزومه هدایت می‌کند.}
+
+\beginmainstep{صفحه‌ی بارگذاری رزومه که شامل قسمتی برای بارگذاری رزومه و پیام \say{لطفا رزومه‌ی خود را با فرمت \lr{PDF} بارگذاری کنید.} می‌باشد، به کارجو نمایش داده می شود.}
+
+\majorstep{\label{send}کارجو فایلی را در صفحه‌ی بارگذاری رزومه بارگذاری می‌کند.}
+
+\majorstep{صفحه‌ی بارگذاری رزومه، فایل بارگذاری شده را به کنترل‌گر رزومه ارسال می‌کند.}
+
+\majorstep{کنترل‌گر بارگذاری رزومه، فرمت فایل بارگذاری شده را بررسی می‌کند.}
+
 \majorstep{اگر فایل بارگذاری شده:}
 \indent\patchstep{\lr{PDF} بود، کنترل‌گر بارگذاری رزومه، فایل بارگذاری شده، به همراه اطلاعات کارفرما که در آگهی بود را توسط یک آبجکت \json   به \gdm می‌فرسند.}
 \indent\indent\betastep{\gdm آبجکت \json را دریافت کرده و با استفاده از مدل‌های \lr{Employer} و \lr{Resume}، فایل رزومه را ذخیره می‌کند.}
-\indent\indent\betastep{کنترل‌گر پیغام \say{رزومه ارسال شد.} را به یک آبجکت \json به لایه‌ی \lr{Front-end} می‌فرسند.}
-\indent\patchstep{\lr{PDF} نبود، کنترل‌گر، پیغام \say{فرمت فایل رزومه‌ی ارسالی باید \lr{PDF} باشد؛ جهت بازگشت به صفحه‌ی بارگزاری روی پیوند \say{بارگزاری روزمه} کلیک کنید} را با یک آبجکت \json به لایه‌ی \lr{Front-end} می‌فرسند.}\\
-\majorstep{لایه‌ی \lr{Front-end} پیغام را به کاربر نشان می‌دهد.}
+\indent\indent\betastep{کنترل‌گر پیغام \say{رزومه ارسال شد.} را به یک آبجکت \json به لایه‌ی \frontend می‌فرسند.}
+\indent\patchstep{\lr{PDF} نبود، کنترل‌گر، پیغام \say{فرمت فایل رزومه‌ی ارسالی باید \lr{PDF} باشد؛ جهت بازگشت به صفحه‌ی بارگزاری روی پیوند \say{بارگزاری روزمه} کلیک کنید} را با یک آبجکت \json به لایه‌ی \frontend می‌فرسند.}
+
+\majorstep{لایه‌ی \frontend پیغام را به کاربر نشان می‌دهد.}
 \subsection{جدول سناریو}
 \begin{table}[H]
 \caption{جدول سناریو \arabic{table}}
@@ -2914,7 +2926,7 @@ urlcolor=Navy,
 	\item اطلاعات کارفرما
 \end{inparaitem}
 &			
-با لایه‌ی \lr{Front-end}\\
+با لایه‌ی \frontend\\
 \hline
 \sstep & 		
 کنترل‌گر بارگذاری رزومه &			
@@ -2959,7 +2971,7 @@ urlcolor=Navy,
 در آبجکت \json \\
 \hline
 \sstep & 		
-لایه‌ی \lr{Front-end}&			
+لایه‌ی \frontend&			
 نشان می‌دهد &			
 پیغام &			
 \\
@@ -2977,10 +2989,10 @@ urlcolor=Navy,
 کنترل‌گر &			
 ارسال می‌کند &			
 آبجکت \json &			
-به لایه‌ی \lr{Front-end}\\
+به لایه‌ی \frontend\\
 \hline
 \sstep & 		
-لایه‌ی \lr{Front-end}&			
+لایه‌ی \frontend&			
 نشان می‌دهد&			
 پیغام&			
 \\
@@ -2996,20 +3008,26 @@ urlcolor=Navy,
 \clearpage
 \section{سناریو و مدل تعامل شئ برای گام 2 از \uc{18}}
 \subsection{سناریو تعامل شئ برای \say{مشاهده‌ی وضعیت آگهی‌های درخواستی}}
-\mainstep{کارجو روی دکمه‌ی \say{وضعیت آگهی‌های درخواستی} در قسمت نوارابزار پنل کاربری کارجو کلیک می‌کند.}\\
-\beginmainstep{صفحه‌ی پنل کاربری، درخواستی مبنی بر آگهی‌های درخواستی کارجو را به کنترل‌گر کارجو ارسال می‌کند.}\\
-\majorstep{کنترل‌گر کارجو، شئ مربوط به آگهی‌‌های درخواستی را از \gdm درخواست می‌کند.}\\
+\mainstep{کارجو روی دکمه‌ی \say{وضعیت آگهی‌های درخواستی} در قسمت نوارابزار پنل کاربری کارجو کلیک می‌کند.}
+
+\beginmainstep{صفحه‌ی پنل کاربری، درخواستی مبنی بر آگهی‌های درخواستی کارجو را به کنترل‌گر کارجو ارسال می‌کند.}
+
+\majorstep{کنترل‌گر کارجو، شئ مربوط به آگهی‌‌های درخواستی را از \gdm درخواست می‌کند.}
+
 \majorstep{\gdm شئ مربوط به آگهی‌های درخواستی را از پایگاه داده‌ می‌خواند.}
 \indent\patchstep{اگر شئ‌ای موجود نباشد:}
 \indent\indent\betastep{\gdm یک آبجکت \none ایجاد می‌کند.}
 \indent\indent\betastep{\gdm شئ ساخته شده را به کنترل‌گر کارجو می‌فرستد.}\\
 \indent\patchstep{اگر شئ مربوط به آگهی‌های درخواستی موجود باشد:}
-\indent\indent\betastep{\gdm آن را در یک آبجکت \json ذخیره و به کنترل‌گر کارجو می‌فرستد.}\\
+\indent\indent\betastep{\gdm آن را در یک آبجکت \json ذخیره و به کنترل‌گر کارجو می‌فرستد.}
+
 \majorstep{کنترل‌گر کارجو یک آبجکت \json یا \none دریافت می‌کند}
 \indent\patchstep{اگر آبجکت \none بود:}
-\indent\indent\betastep{کنترل‌گر کارجو پیغام \say{آگهی‌ درخواستی‌ای موجود نمی‌باشد} را در یک آبجکت \json ذخیره می‌کند.}\\
-\majorstep{کنترل‌گر آبجکت \json را به لایه‌ی \lr{Front-end} ارسال می‌کند.}\\
-\majorstep{لایه‌ی \lr{Front-end} اطلاعات لازم را پردازش و به کارجو نشان می‌دهد.}
+\indent\indent\betastep{کنترل‌گر کارجو پیغام \say{آگهی‌ درخواستی‌ای موجود نمی‌باشد} را در یک آبجکت \json ذخیره می‌کند.}
+
+\majorstep{کنترل‌گر آبجکت \json را به لایه‌ی \frontend ارسال می‌کند.}
+
+\majorstep{لایه‌ی \frontend اطلاعات لازم را پردازش و به کارجو نشان می‌دهد.}
 
 \subsection{جدول سناریو}
 \begin{table}[H]
@@ -3086,16 +3104,16 @@ urlcolor=Navy,
 کنترل‌گر کارجو&
 ارسال می‌کند &
 آبجکت \json&
-به لایه‌ی \lr{Front-end}\\
+به لایه‌ی \frontend\\
 \hline
 \sstep &
-لایه‌ی \lr{Front-end}&
+لایه‌ی \frontend&
 پردازش می‌کند &
 آبجکت \json دریافتی&
 \\
 \hline
 \sstep &
-لایه‌ی \lr{Front-end}&
+لایه‌ی \frontend&
 نشان ‌می‌دهد&
 اطلاعات پردازش شده &
 به کارجو \\
@@ -3105,14 +3123,139 @@ urlcolor=Navy,
 \end{adjustbox}
 \end{table}
 \setcounter{SenarioCounter}{0}
+\subsection{نمودار توالی}
 
+\clearpage
+\section{سناریو و مدل تعامل شئ برای گام ۲ از \uc{23}}
+\subsection{سناریو تعامل شئ برای \say{جست‌وجوی آگهی}}
+\mainstep{کاربر کلید‌واژه‌ی مربوطه را در قسمت نوار جستجو وارد می‌کند}
+
+\beginmainstep{صفحه‌ی جستجو‌ی آگهی‌ها، عبارت جستجو را در قالب یک آبجکت \json به همراه دیگر پارامتر‌های جستجو (مثل مرتب‌سازی و فیلتر‌ها) به کنترل‌گر آگهی می‌فرستد.}
+
+\majorstep{کنترل‌گر آگهی، این آبجکت \json را به \gdm ارسال می‌کند.}
+
+\majorstep{\gdm با استفاده از مدل \lr{Advertisement} در پایگاه داده جستجو کرده و نتیحه را از مدل دریافت می‌کند.}
+
+\majorstep{اگر نتیجه جستجو:}
+\indent\patchstep{چیزی نبود، \gdm یک آبجکت \none را به کنترل‌گر آگهی ارسال می‌کند.}
+\indent\patchstep{در غیر این صورت، تمامی آگهی‌‌های پیدا شده را به \json اصطلاحا\\ \lr{serialize} می‌کند و به کنترل‌گر آگهی می‌فرستد.}
+
+\majorstep{کنترل‌گر آگهی، نتیحه را دریافت می‌کند.}
+
+\majorstep{اگر \none بود:}
+\indent\patchstep{پیغام \say{آگهی‌‌ای پیدا نشد} را در یک آبجکت \json ذخیره و به لایه‌ی \frontend ارسال می‌کند.}
+\indent\patchstep{در غیر این صورت، آبجکت‌های \json عه دریافتی را به \frontend می‌فرستد}
+
+\majorstep{لایه‌ی \frontend نتایج را از آبجکت‌ \json خوانده و به کاربر نشان می‌دهد.}
+
+\subsection{جدول سناریو}
+\begin{table}[H]
+\caption{جدول سناریو \arabic{table}}
+\begin{adjustbox}{width=\textwidth}
+\begin{tabular}{|c|c|c|c|c|}
+\hline								
+\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
+\hline
+\sstep &
+صفحه‌ی جستجو‌ی آگهی &
+ارسال می‌کند &
+آبجکت \json &
+به کنترل‌گر آگهی \\
+\hline
+\sstep &
+کنترل‌گر آگهی&
+ارسال می‌کند &
+آبجکت \json &
+به \gdm\\
+\hline
+\sstep &
+\gdm &
+جستجو می‌کند &
+&
+با مدل \lr{Advertisement}\\
+\hline
+\sstep &
+مدل \lr{Advertisement}&
+چستجو می‌کند &
+&
+در پایگاه‌ داده\\
+\hline
+\sstep &
+مدل \lr{Advertisement}&
+بر می‌گرداند &
+آبجکت‌های آگهی‌های پیدا شده &
+به \gdm \\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر چیزی پیدا نشده بود}\\
+\hline
+\sstep &
+\gdm&
+ارسال می‌کند &
+آبجکت \none&
+به کنترل‌گر آگهی \\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{در غیر این صورت}\\
+\hline
+\sstep &
+\gdm&
+\lr{serialize} می‌کند&
+آبجکت‌های پیدا شده &
+به \json \\
+\hline
+\sstep &
+\gdm &
+ارسال ‌می‌کند&
+آبجکت \json &
+به کنترل‌‌گر آگهی \\
+\hline
+\sstep &
+کنترل‌‌گر آگهی&
+دریافت می‌کند &
+\begin{inparaitem}
+	\item \none 
+\end{inparaitem}
+یا 
+\begin{inparaitem}
+	\item \json
+\end{inparaitem}
+&
+\\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر \none بود}
+\\
+\hline
+\sstep &
+کنترل‌گر آگهی &
+ذخیره می‌کند &
+پیغام \say{آگهی‌ای پیدا نشد}&
+در آبجکت \json \\
+\hline
+\sstep &
+کنترل‌گر آگهی &
+ارسال می‌کند &
+آبجکت \json &
+به لایه‌ی \frontend\\
+\hline
+\sstep &
+لایه‌ی \frontend&
+نمایش می‌دهد &
+اطلاعات دریافتی &
+در مرورگر \\
+\hline
+\end{tabular}
+\end{adjustbox}
+\end{table}
+\setcounter{SenarioCounter}{0}
 \subsection{نمودار توالی}
 
 \chapter{اعمال الگو‌های واگذاری مسئولیت}
 \section{توضیح الگو‌های استفاده شده}
 
 \chapter{استنتاج نمودار کلاس طراحی}
-\section{بسته‌ی \lr{Front-end}}
+\section{بسته‌ی \frontend}
 \section{بسته‌ی \lr{Back-end}}
 \section{بسته‌ی \lr{Data}}
 \section{بسته‌ی \lr{Network}}
