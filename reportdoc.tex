@@ -141,7 +141,7 @@ urlcolor=Navy,
 \newcommand{\onej}{۱-ج}
 \newcommand{\fiveb}{۵-ب}
 
-\newcommand{\json}{\lr{JSON}}
+\newcommand{\json}{\lr{JSON} }
 \begin{document}
 \renewcommand{\bibname}{مراجع}
 \includepdf{title}
@@ -2869,22 +2869,119 @@ urlcolor=Navy,
 \subsection{نمودار توالی}
 
 \clearpage
-\section{سناریو و مدل تعامل شئ برای گام \lr{n} از \uc{01}}
-\subsection{سناریو تعامل شئ برای \say{...}}
+\section{سناریو و مدل تعامل شئ برای گام ۳ از \uc{12}}
+\subsection{سناریو تعامل شئ برای \say{ارسال رزومه}}
+\setcounter{MainStepCounter}{1}
+\mainstep{سیستم، کارجو را به صفحه‌ی بارگذاری رزومه هدایت می‌کند.} \\
+\beginmainstep{صفحه‌ی بارگذاری رزومه که شامل قسمتی برای بارگذاری رزومه و پیام \say{لطفا رزومه‌ی خود را با فرمت \lr{PDF} بارگذاری کنید.} می‌باشد، به کارجو نمایش داده می شود.}\\
+\majorstep{\label{send}کارجو فایلی را در صفحه‌ی بارگذاری رزومه بارگذاری می‌کند.}\\
+\majorstep{صفحه‌ی بارگذاری رزومه، فایل بارگذاری شده را به کنترل‌گر رزومه ارسال می‌کند.}\\
+\majorstep{کنترل‌گر بارگذاری رزومه، فرمت فایل بارگذاری شده را بررسی می‌کند.}\\
+\majorstep{اگر فایل بارگذاری شده:}
+\indent\patchstep{\lr{PDF} بود، کنترل‌گر بارگذاری رزومه، فایل بارگذاری شده، به همراه اطلاعات کارفرما که در آگهی بود را توسط یک آبجکت \json   به \lr{GDM} می‌فرسند.}
+\indent\indent\betastep{\lr{GDM} آبجکت \json را دریافت کرده و با استفاده از مدل‌های \lr{Employer} و \lr{Resume}، فایل رزومه را ذخیره می‌کند.}
+\indent\indent\betastep{کنترل‌گر پیغام \say{رزومه ارسال شد.} را به یک آبجکت \json به لایه‌ی \lr{Front-end} می‌فرسند.}
+\indent\patchstep{\lr{PDF} نبود، کنترل‌گر، پیغام \say{فرمت فایل رزومه‌ی ارسالی باید \lr{PDF} باشد؛ جهت بازگشت به صفحه‌ی بارگزاری روی پیوند \say{بارگزاری روزمه} کلیک کنید} را با یک آبجکت \json به لایه‌ی \lr{Front-end} می‌فرسند.}\\
+\majorstep{لایه‌ی \lr{Front-end} پیغام را به کاربر نشان می‌دهد.}
 \subsection{جدول سناریو}
-
 \begin{table}[H]
 \caption{جدول سناریو \arabic{table}}
 \begin{adjustbox}{width=\textwidth}
 \begin{tabular}{|c|c|c|c|c|}
-\hline			\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
+\hline		
+\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
 \hline
 \hline
 \sstep & 		
-سلام 1 &			
-سلام 2 &			
-سلام 3 &			
-سلام 4 \\
+سیستم &			
+نشان دادن &
+صفحه‌ی بارگذاری رزومه &
+\\
+\hline
+\sstep & 		
+کارجو &			
+آپلود می‌کند &			
+فایل رزومه &			
+صفحه‌ی بارگذاری رزومه \\
+\hline
+\sstep & 		
+صفحه‌ی بارگذاری رزومه &			
+ارسال می‌کند &			
+\begin{inparaitem}
+	\item فایل رزومه
+	\item اطلاعات کارفرما
+\end{inparaitem}
+&			
+با لایه‌ی \lr{Front-end}\\
+\hline
+\sstep & 		
+کنترل‌گر بارگذاری رزومه &			
+بررسی می‌کند &			
+فایل رزومه‌ی آپلود شده &			
+\\
+\hline
+\sstep & 		
+\multicolumn{4}{|r|}{اگر فایل باگذاری شده، \lr{PDF} بود:}\\
+\hline
+\sstep & 		
+کنترل‌گر بارگذاری&			
+ذخیره می‌کند &			
+آبجکت \json&			
+\begin{inparaitem}
+	\item فایل رزومه
+	\item اطلاعات کارفرما
+\end{inparaitem}
+\\
+\hline
+\sstep & 		
+کنترل‌گر &			
+ارسال می‌کند &			
+آبجکت \json &			
+به \lr{GDM}\\
+\hline
+\sstep & 		
+\lr{GDM}&			
+ذخیره می‌کند &			
+رزومه‌&			
+با
+\begin{inparaitem}
+	\item مدل \lr{Resume}
+	\item مدل \lr{Employer}	
+\end{inparaitem}
+\\
+\hline
+\sstep & 		
+کنترل‌گر&			
+ذخیره می‌کند &			
+متن \say{رزومه ارسال شد}&			
+در آبجکت \json \\
+\hline
+\sstep & 		
+لایه‌ی \lr{Front-end}&			
+نشان می‌دهد &			
+پیغام &			
+\\
+\hline
+\sstep & 		
+\multicolumn{4}{|r|}{اگر \lr{PDF} نبود:}\\
+\hline
+\sstep & 		
+کنترل‌گر &			
+ذخیره می‌کند &			
+پیغام \say{...}&			
+آبجکت \json \\
+\hline
+\sstep & 		
+کنترل‌گر &			
+ارسال می‌کند &			
+آبجکت \json &			
+به لایه‌ی \lr{Front-end}\\
+\hline
+\sstep & 		
+لایه‌ی \lr{Front-end}&			
+نشان می‌دهد&			
+پیغام&			
+\\
 \hline
 \end{tabular}
 \end{adjustbox}
