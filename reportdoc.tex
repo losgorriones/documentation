@@ -2797,23 +2797,19 @@ urlcolor=Navy,
 	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}.\arabic{CandidateStepCounter}. {#1} \\
 }
 % --------------------------------------------------------
-% \setlength{\parindent}{0.1cm}
 \mainstep{کارفرما بر روی دکمه‌ی \say{رزومه} در پروفایل کارجوی مدنظر کلیک می‌کند.}
 
 \beginmainstep{صفحه‌ی پروفایل کارجو، یک درخواست مبنی بر خواست رزومه و اطلاعات کارجو برا به صورت \json به کنترل‌گر کارجو می‌فرستد.}
 
 \majorstep{کنترل‌گر کارجو، این اطلاعات را به \gdm\RTLfootnote{\lr{Great Database Manager} این کلاس مسئول مدیریت مدل‌های موجود در \lr{ORM} معماری پروژه‌ است.} می‌فرستد}
-
-\majorstep{\gdm با استفاده از مدل \lr{Employer} و اطلاعات درون آبجکت \json، رزومه را از دیتابیس می‌خواند.}
 \indent\patchstep{اگر رزومه‌ای وجود داشت، آن را در یک آبجکت \json برای کنترل‌گر می‌فرستد}
 \indent\patchstep{اگر رزومه‌ای نبود، یک آبجکت \none به کنترل‌گر کارجو، برمیگرداند.}\\
 \majorstep{کنترل‌گر کارجو، آبجکت \json پاسخ را دریافت می‌کند.}
-\indent\patchstep{اگر پاسخ بازگشتی، \none نبود آبجکت \json را برای ارسال به لایه‌ی \frontend آماده نگه‌ می‌دارد.}
+\indent\patchstep{اگر پاسخ بازگشتی، \none نبود آبجکت \json را برای ارسال به صفحه‌ی پروفایل کارجو آماده نگه‌ می‌دارد.}
 \indent\patchstep{در غیر این صورت، پیغام \say{عدم وجود رزومه} را در یک آبجکت \json  ذخیره می‌کند.}
 
-\majorstep{کنترل‌گر آبجکت \json را می‌فرستد.}
+\majorstep{کنترل‌گر آبجکت \json را به صفحه‌ی پروفایل کارجو می‌فرستد.}
 
-\majorstep{لایه‌ی \frontend صفحه‌ی مناسب را با اطلاعات دریافت شده پر و به کافرما نشان می‌دهد.}
 % --------------------------------------------------------
 \setcounter{MainStepCounter}{0}
 
@@ -2832,7 +2828,7 @@ urlcolor=Navy,
 کارفرما &
 کلیک می‌کند &
 دکمه‌ی رزومه &
-از صفحه‌ی پروفایل کارحو \\
+از صفحه‌ی پروفایل کارجو \\
 \hline
 \sstep & 
 صفحه‌ی پروفایل کارجو &
@@ -2849,44 +2845,12 @@ urlcolor=Navy,
 \json &
 به \gdm \\
 \hline
-\sstep & 
-\gdm &
-ارسال می‌کند &
-آبجکت \json &
-به مدل \lr{Employer} \\
-\hline
-\sstep & 
-مدل \lr{Employer} & 
-می‌خواند &
-رزومه &
-پایگاه داده \\
-\hline
 \sstep & \multicolumn{4}{|r|}{اگر رزومه‌ای وجود داشت} \\
 \hline
 \sstep & 
-مدل \lr{Employer} & 
-ارسال می‌کند &
-رزومه &
-به \gdm\\
-\hline
-\sstep & 
-\lr{GDN}&
+\gdm &
 ذخیره می‌کند &
 رزومه &
-در \json\\
-\hline
-\sstep & \multicolumn{4}{|r|}{اگر رزومه‌ای وجود نداشت}\\
-\hline
-\sstep & 
-مدل \lr{Employer} & 
-ارسال می‌کند &
-\none &
-به \gdm\\
-\hline
-\sstep & 
-\lr{GDN}&
-ذخیره می‌کند &
-\none&
 در \json\\
 \hline
 \sstep & 
@@ -2894,6 +2858,14 @@ urlcolor=Navy,
 ارسال می‌کند &
 آبجکت \json &
 کنترل‌گر کارجو \\
+\hline
+\sstep & \multicolumn{4}{|r|}{اگر رزومه‌ای وجود نداشت}\\
+\hline
+\sstep & 
+\gdm&
+بر می‌گرداند &
+\none&
+به کنترل‌گر کارجو \\
 \hline
 \sstep & \multicolumn{4}{|r|}{اگر \none بود} \\
 \hline
@@ -2907,19 +2879,7 @@ urlcolor=Navy,
 کنترل‌گر کارجو &
 ارسال می‌کند &
 آبجکت \json &
-لایه‌ی \frontend \\
-\hline
-\sstep & 
-لایه‌ی \frontend&
-پردازش اطلاعات &
-صفحه‌(ها)ی لازم&
-\\
-\hline
-\sstep & 
-لایه‌ی \frontend&
-ارسال صفحه‌ها &
-صفحه‌ها &
-مرورگر \\
+به صفحه‌ی پروفایل کارجو \\
 \hline
 \end{tabular}
 \end{adjustbox}
