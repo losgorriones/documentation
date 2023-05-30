@@ -17,62 +17,6 @@
 \clearpage
 \section{سناریو و مدل تعامل شئ برای گام 2 از \uc{25}}
 \subsection{سناریو تعامل شئ برای \say{مشاهده‌ی رزومه‌ها}}
-\newcounter{MainStepCounter}
-\newcounter{MajorStepCounter}
-\newcounter{PatchStepCounter}
-\newcounter{BetaStepCounter}
-\newcounter{AlphaStepCounter}
-\newcounter{CandidateStepCounter}
-
-\newcommand{\mainstep}[1]{
-	\setcounter{MajorStepCounter}{0}
-	\setcounter{PatchStepCounter}{0}
-	\setcounter{BetaStepCounter}{0}
-	\setcounter{AlphaStepCounter}{0}
-	\setcounter{CandidateStepCounter}{0}	
-	\setcounter{MajorStepCounter}{0}
-	\stepcounter{MainStepCounter}
-	\arabic{MainStepCounter}. {#1} \\
-}
-\newcommand{\beginmainstep}[1]{
-	\setcounter{MajorStepCounter}{1}
-	\setcounter{PatchStepCounter}{0}
-	\setcounter{BetaStepCounter}{0}
-	\setcounter{AlphaStepCounter}{0}
-	\setcounter{CandidateStepCounter}{0}	
-	\stepcounter{MainStepCounter}
-	\arabic{MainStepCounter}.\arabic{MajorStepCounter}. {#1} \\
-}
-\newcommand{\majorstep}[1]{
-	\setcounter{PatchStepCounter}{0}
-	\setcounter{BetaStepCounter}{0}
-	\setcounter{AlphaStepCounter}{0}
-	\setcounter{CandidateStepCounter}{0}
-	\stepcounter{MajorStepCounter}
-	\arabic{MainStepCounter}.\arabic{MajorStepCounter}. {#1} \\
-}
-\newcommand{\patchstep}[1]{
-	\setcounter{BetaStepCounter}{0}
-	\setcounter{AlphaStepCounter}{0}
-	\setcounter{CandidateStepCounter}{0}
-	\stepcounter{PatchStepCounter}
-	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}. {#1} \\
-}
-\newcommand{\betastep}[1]{
-	\setcounter{AlphaStepCounter}{0}
-	\setcounter{CandidateStepCounter}{0}
-	\stepcounter{BetaStepCounter}
-	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}. {#1} \\
-}
-\newcommand{\alphastep}[1]{
-	\setcounter{CandidateStepCounter}{0}\stepcounter{AlphaStepCounter}
-	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}. {#1} \\
-}
-\newcommand{\candidatestep}[1]{
-	\stepcounter{CandidateStepCounter}
-	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}.\arabic{CandidateStepCounter}. {#1} \\
-}
-% --------------------------------------------------------
 \mainstep{کارفرما بر روی دکمه‌ی \say{رزومه} در پروفایل کارجوی مدنظر کلیک می‌کند.}
 
 \beginmainstep{صفحه‌ی پروفایل کارجو، یک درخواست مبنی بر خواست رزومه و اطلاعات کارجو برا به صورت \json به کنترل‌گر کارجو می‌فرستد.}
