@@ -1,0 +1,306 @@
+\chapter{مدل‌سازی تعامل کنشگر-سیستم}
+در این فصل جداول دو‌ ستونی بیانگر تعامل میان کنشگر و سیستم آمده است که شامل ورودی و خروجی کنشگر و نیز پاسخ سیستم می‌باشد.
+
+
+\section{گام‌های معادل‌سازی تعامل کنشگر-سیستم}
+\begin{enumerate}
+	\item 
+	ایجاد یک حدول دو ستونی
+	
+	\item 
+	تعیین گام‌های تعامل کنشگر-سیستم
+	
+	\item 
+	بازبینی مشخصات تعامل کنشگر-سیستم
+\end{enumerate}
+
+پس از طی مراحل فوق، جداولی که در ادامه‌ی مدل‌سازی تعامل کنشگر-سیستم آمده‌ است، رسم شده‌اند.
+
+\section{نمودار‌های تعامل کنشگر-سیستم}
+پس از مشخص شدن موارد کاربرد با مدل‌سازی تعامل کنشگر-سیستم برای برخی از مورد‌ کاربرد‌های پیچیده‌تر نمودار‌های تعامل کنشگر-سیستم برای این موارد کاربرد مشخص شده است که در جداول 
+\ref{table:uc:req-manage}،
+\ref{table:uc:apply-search}،
+\ref{table:uc:see-resumes}،
+\ref{table:uc:bookmark}،
+\ref{table:uc:see-reqs}،
+\ref{table:uc:send-resume} و
+\ref{table:uc:company-profile}
+قابل رؤیت است.
+
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (ثبت آگهی توسط کارفرما)}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{14}{ثبت آگهی توسط کارفرما}
+			\hline
+			
+			\preif{کارفرما وارد سیستم شده باشد.}
+			\hline
+			
+			\actorsystem{کارفرما}
+			\hline
+			
+			\zerostep{{\small سیستم پنل کاربری کارفرما را نمایش بدهد.}}
+			\hline
+			
+			\step{{\small \textbf{\tucbw}: کارفرما بر روی دکمه‌ی \say{ثبت آگهی} در پنل کاربری کلیک می‌کند.}} & 
+			\step{{\small سیستم فرم مربوط به ایجاد آگهی‌ را نشان می‌دهد.}} \\
+			\hline
+			
+			\step{{\small کارفرما اطلاعات مروبط به آگهی را در فرم وارد کرده و بر روی دکمه‌ی \say{ثبت آگهی} کلیک می‌کند.}} &
+			
+			\step{{\small سیستم صفحه‌ی بررسی و پرداخت صورت حساب آگهی را نشان می‌دهد.}} \\ \hline
+			
+			\step{{\small کارفرما بر روی دکمه‌ی \say{پرداخت از طریق درگاه بانکی} کلیک می‌کند.}} &
+			
+			% --------------------------------------------------------
+			\renewcommand{\labelenumi}{\alph{enumi})}
+			% --------------------------------------------------------
+			
+			\step{{\small سیستم اطلاعات تراکنش را به درگاه بانکی ارسال می‌کند و نتیجه تراکنش را دریافت  می‌کند:
+					\begin{enumerate}
+						\item 
+						اگر تراکنش موفقت‌آمیز بود، سیستم به صفحه‌ی پنل کاربری بازگشته و پیغام \say{آگهی با موفقیت ثبت شد.} را نمایش می‌دهد
+						\item 
+						اگر تراکنش ناموفق بود، سیستم به صفحه‌ی پنل کاربری بازگشته و پیغام \say{پرداخت ناموفق بود، آگهی ثبت نشد.} را نمایش می‌دهد.
+					\end{enumerate}
+			}} \\ \hline
+			
+			% --------------------------------------------------------
+			\renewcommand{\labelenumi}{\alph{enumi})}
+			% --------------------------------------------------------
+			
+			\step{{\small \textbf{\tucew}: کارفرما پیغام 
+					\begin{enumerate}
+						\item 
+						آگهی با موفقیت ثبت شد.
+						\item 
+						پرداخت ناموفق بود، آگهی ثبت نشد.
+				\end{enumerate}}  را مشاهده می‌کند.} &
+			\\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
+% --------------------------------------------------------
+\renewcommand{\labelenumi}{\arabic{enumi})}
+% --------------------------------------------------------
+
+\setcounter{UseCaseCounter}{0}
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (‌جستجوی آگهی‌ها)}
+	\label{table:uc:apply-search}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{23}{جستجوی آگهی‌ها}
+			\hline
+			
+			\preif{کاربر وارد سیستم شده باشد.}
+			\hline
+			
+			\actorsystem{کاربر}
+			\hline
+			
+			\zerostep{{\small سیستم صفحه‌‌ی اصلی سایت را نشان می‌دهد که این صفحه، نوار جستجو را هم داراست.}}
+			\hline
+			
+			\step{{\small \textbf{\tucbw}: کاربر کلید‌واژه‌ی مربوطه را در قسمت نوار جستجو وارد می‌کند.}} & 
+			\step{{\small سیستم عبارت را در پایگاه داده جستجو می‌کند.}} \\
+			\hline
+			
+			\step{{\small کاربر یک صفحه‌ی \lr{preload} را مشاهده می‌کند و اندکی منتظر نتایج می‌ماند.}} &
+			\step{{\small سیستم صفحه‌ی نتایج جستجو را با نتایج پر می‌کند.}} \\
+			\hline
+			
+			\step{{\small \textbf{\tucew}: کاربر نتیجه‌ی جستجو را مشاهده می‌کند.}} & 
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\setcounter{UseCaseCounter}{0}
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی رزومه‌ها)}
+	\label{table:uc:see-resumes}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{25}{مشاهده‌ی رزومه‌ها}
+			\hline
+			
+			\preif{کارفرما وارد سیستم شده باشد.}
+			\hline
+			
+			\actorsystem{کارفرما}
+			\hline
+			
+			\zerostep{{\small سیستم پروفایل یک کارجو را نشان می‌دهد.}}
+			\hline
+			
+			\step{\textbf{\tucbw}: کارفرما بر روی دکمه‌ی \say{رزومه} در صفحه‌ی پروفایل کارجوی مدنظر کلیک می‌کند.} & 
+			
+			\renewcommand{\labelenumi}{\alph{enumi})}
+			\step{{\small سیستم رزومه‌ي کارجو را از پایگاه داده خوانده و  
+					\begin{enumerate}
+						\item اگر رزومه‌ای وجود داشت، آن را به کارفرما نشان می‌دهد.
+						\item
+						اگر رزومه وجود نداشت پیغام \say{عدم وجود رزومه} را نشان می‌دهد.
+					\end{enumerate}
+			}} \\
+			\hline
+			\renewcommand{\labelenumi}{\arabic{enumi})}
+			\step{{\small \textbf{\tucew}: کارفرما یا رزومه را مشاهده کرده یا پیغام \say{عدم پیغام رزومه} را می‌بیند.}} & 
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\setcounter{UseCaseCounter}{0}
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (نشان‌دار‌ کردن آگهی)}
+	\label{table:uc:bookmark}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{17}{نشان‌دار‌ کردن آگهی}
+			\hline
+			
+			\preif{کارجو وارد سیستم شده باشد.}
+			\hline
+			
+			\actorsystem{کارجو}
+			\hline
+			
+			\zerostep{{\small سیستم صفحه‌ی یک آگهی را نشان می‌دهد.}}
+			\hline
+			
+			\step{{\small \textbf{\tucbw}: کارجو بر روی علامت ستاره در صفحه‌ی مربوط به آگهی مدنظر کلیک می‌کند}} & 
+			
+			% --------------------------------------------------------
+			\renewcommand{\labelenumi}{\alph{enumi})}
+			% --------------------------------------------------------
+			
+			\step{{\small \begin{enumerate}
+						\item اگر آگهی جزو نشان‌دار‌ها بود، از نشان‌دار‌ها حذف شود و پیغام \say{آگهی از نشان‌دارها حذف شد} را نشان دهد.
+						\item در غیر این صورت آگهی را به آگهی‌های نشان‌دار اضافه و پیغام \say{آگهی به آگهی‌های نشان‌دار افزوده شد.} را نشان دهد.
+			\end{enumerate}}} \\
+			\hline
+			% --------------------------------------------------------
+			\renewcommand{\labelenumi}{\arabic{enumi})}
+			% --------------------------------------------------------
+			
+			\step{{\small \textbf{\tucew}: کارجو پیغام \say{آگهی به لیست آگهی‌های نشان‌دار افزوده شد} یا \say{آگهی‌ از نشان‌دار‌ها حذف شد.} را مشاهده می‌کند.}} & 
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\setcounter{UseCaseCounter}{0}
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی وضعیت آگهی‌های درخواستی)}
+	\label{table:uc:see-reqs}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{18}{مشاهده‌ی وضعیت آگهی‌های درخواستی}
+			\hline
+			
+			\preif{کارجو وارد سیستم شده باشد.}
+			\hline
+			
+			\actorsystem{کارجو}
+			\hline
+			
+			\zerostep{{\small سیستم پنل‌کاربری کارجو را نشان‌ می‌دهد.}}
+			\hline
+			
+			\step{{\small\textbf{\tucbw}: کارجو به روی دکمه‌ی \say{وضعیت‌ آگهی‌های درخواستی} در قسمت نوار ابزار پنل کاربری کارجو، کلیک می‌کند.}} & 
+			
+			\step{{\small سیستم آگهی‌های درخواست داده شده توسط کارجو و وضعیت‌ آنها را از پایگاه داده دریافت کرده و به کاربر نشان می‌دهد}} \\
+			\hline
+			
+			\step{{\small\textbf{\tucew}: کارجو لیستی از آگهی‌ها و وضعیتشان را مشاهده می‌کند.}} & 
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\setcounter{UseCaseCounter}{0}
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (ارسال روزمه)}
+	\label{table:uc:send-resume}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{12}{ارسال روزمه}
+			\hline
+			
+			\preif{کاربر وارد شده باشد.}
+			\hline
+			
+			\actorsystem{کارجو}
+			\hline
+			
+			\zerostep{{\small سیستم صفحه‌ی مربوط به آگهی مدنظر را نمایش دهد.}}
+			\hline
+			
+			\step{{\small \textbf{\tucbw}: کارجو بر روی دکمه‌ی \say{ارسال رزومه} در صفحه‌ی آگهی یک شرکت کلیک می‌کند.}} & 
+			\step{{\small سیستم کارجو را به صفحه‌ی بارگزاری رزومه هدایت می‌کند.}} \\
+			\hline
+			
+			\step{{\small کارجو رزومه‌ی خود را بارگزاری می‌کند و به روی دکمه‌ی \say{ارسال} کلیک می‌کند.}} & \step{{\small سیستم فایل آپلود شده را برای کارفرمای صاحب آگهی ارسال می‌کند و پیغام \say{رزومه ارسال شد.} را به کارجو نشان می‌دهد.}} \\ \hline
+			
+			\step{{\small \textbf{\tucew}: کارجو پیغام \say{رزومه‌ ارسال شد.} را مشاهده می‌کند.}} & 
+			\\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\setcounter{UseCaseCounter}{0}
+\begin{table}[H]
+	\caption{تعامل کنشگر-سیستم \arabic{table} (مشاهده‌ی پروفایل شرکت‌ها)}
+	\label{table:uc:company-profile}
+	\begin{center}
+		\begin{tabular}{|p{0.5\textwidth}|p{0.5\textwidth}|}
+			\hline
+			
+			\ucname{13}{مشاهده‌ی پروفایل شرکت‌ها}
+			\hline
+			
+			\preif{کاربر وارد سیستم شده باشد.}
+			\hline
+			
+			\actorsystem{کاربر}
+			\hline
+			
+			\zerostep{{\small سیستم صفحه‌ی مربوط به پروفایل شرکت‌ها را نشان بدهد.}}
+			\hline
+			
+			\step{{\small \textbf{\tucbw}: کاربر بر روی پروفایل یک شرکت در صفحه‌ی معرفی شرکت‌ها کلیک می‌کند.}} & 
+			\step{{\small سیستم اطلاعات مربوط به شرکت مدنظر را از پایگاه داده خوانده و صفحه‌ی مربوطه را آماده می‌کند.}} \\
+			\hline
+			
+			\step{{\small \textbf{\tucew}: کاربر وارد صفحه‌ی مربوط به شرکت مدنظر می‌شود و اطلاعات آنرا مشاهده می‌کند.}} & 
+			\\
+			\hline
+		\end{tabular}
+	\end{center}
+\end{table}
