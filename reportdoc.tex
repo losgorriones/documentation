@@ -1,4 +1,4 @@
-\documentclass[12pt,svgnames,oneside]{book}
+\documentclass[12pt,dvipsnames, svgnames, x11names,oneside]{book}
 
 % inline lists ----------------------------------------------
 \usepackage{paralist}
@@ -49,6 +49,34 @@ urlcolor=Navy,
 
 % quotes ----------------------------------------------------
 \newcommand{\say}[1]{‍''{#1}`‍`}
+% -----------------------------------------------------------
+
+% code listing ----------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+	language=TeX,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle=\ttfamily,
+	numbers=left,
+	numberstyle=\small\color{gray},
+	keywordstyle=\bfseries\color{Green4},
+	commentstyle=\color{gray},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4,
+	identifierstyle=\color{black},
+	keywords={begin, includepdf, frontmatter, tableofcontents, mainmatter, include}
+}
 % -----------------------------------------------------------
 
 % persian support -------------------------------------------
@@ -208,7 +236,6 @@ urlcolor=Navy,
 	\stepcounter{CandidateStepCounter}
 	\arabic{MainStepCounter}.\arabic{MajorStepCounter}.\arabic{PatchStepCounter}.\arabic{BetaStepCounter}.\arabic{AlphaStepCounter}.\arabic{CandidateStepCounter}. {#1} \\
 }
-% --------------------------------------------------------
 % -----------------------------------------------------------
 
 \begin{document}
