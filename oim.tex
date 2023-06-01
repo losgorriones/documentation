@@ -629,15 +629,102 @@
 \clearpage
 \section{سناریو و مدل تعامل شئ برای گام ۶ از \uc{1}}
 \subsection{سناریو تعامل شئ برای \say{ثبت‌نام کاربر}}
+\setcounter{MainStepCounter}{4}
+\mainstep{کاربر اطلاعات را وارد کرده و به روی دکمه‌ی ثبت‌نام کلیک می‌کند}
+
+\beginmainstep{صفحه ثبت‌نام اطلاعات را به کنترل‌گر ثبت‌نام می‌فرستد.}
+
+\majorstep{کنترل‌گر اطلاعات را پردازش می‌کند}
+\indent\patchstep{اگر ثبت‌نام موفقیت‌‌آمیز بود:}
+\indent\indent\betastep{کنترل‌گر پیغام \say{ثبت‌نام موفقیت‌آمیز بود.} را در یک آبجکت \json می‌نویسد.}
+\indent\indent\betastep{اطلاعات را برای \gdm می‌فرستد.}
+\indent\indent\betastep{اگر کارجو بود:}
+\indent\indent\indent\alphastep{اطلاعات را به پنل کاربری کارجو ارسال می‌کند}
+\indent\indent\betastep{اگر کارفرما بود}
+\indent\indent\indent\alphastep{اطلاعات را به پنل کاربری کارفرما ارسال می‌کند.}
+\indent\patchstep{در غیر این صورت:}
+\indent\indent\betastep{کنترل‌گر پیغام \say{ثبت‌نام انجام نشد.} را در یک آبجکت \json می‌نویسد.}
+\indent\indent\betastep{اطلاعات را به صفحه‌ی اصلی ارسال می‌کند.}
 \subsection{جدول سناریو}
 \begin{table}[H]
 	\caption{جدول سناریو \arabic{table}}
 	\begin{adjustbox}{width=\textwidth}
 		\begin{tabular}{|c|c|c|c|c|}
 			\hline								
-			\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
+\# & فاعل & کنش فاعل & دیگرداده‌ها/اشیا & شئ‌ای که کنش روی آن انجام می‌شود \\
 			\hline
 			\hline
+			\sstep &
+			کاربر &
+            کلیک می‌کند &
+			دکمه‌ی ثبت‌نام & 
+			صفحه‌ی ثبت‌نام \\
+			\hline
+\sstep &
+صفحه‌ی ثبت‌نام & 
+ارسال می‌کند &
+اطلاعات صفحه‌ی ثبت‌نام &
+به کنترل‌گر ثبت‌نام\\
+\hline
+\sstep &
+کنترل‌گر & 
+پردازش می‌کند &
+اطلاعات ثبت‌نام &
+\\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر ثبت‌نام مجاز بود}
+\\
+\hline
+\sstep &
+کنترل‌گر ثبت‌نام& 
+ذخیره می‌کند &
+پیغام \say{ثبت‌نام موفقیت‌آمیز بود}&
+در آبجکت \json \\
+\hline
+\sstep &
+کنترل‌گر & 
+ارسال می‌کند &
+اطلاعات ثبت‌نام &
+به \gdm \\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر کارجو بود}
+\\
+\hline
+\sstep &
+کنترل‌گر & 
+ارسال می‌کند &
+اطلاعات و آبجکت \json &
+پنل کاربری کارجو \\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر کارفرما بود}
+\\
+\hline
+\sstep &
+کنترل‌گر & 
+ارسال می‌کند &
+اطلاعات و آبجکت \json &
+پنل کاربری کارفرما \\
+\hline
+\sstep &
+\multicolumn{4}{|r|}{اگر ثبت‌نام مجاز نبود}
+\\
+\hline
+\sstep &
+کنترل‌گر & 
+ذخیره می‌کند &
+پیغام \say{ثبت‌نام انجام نشد}&
+در آبجکت \json \\
+\hline
+\sstep &
+کنترل‌گر & 
+ارسال می‌کند &
+آبجکت \json &
+صفحه‌ی اصلی \\
+\hline
+
 		\end{tabular}
 	\end{adjustbox}
 \end{table}
